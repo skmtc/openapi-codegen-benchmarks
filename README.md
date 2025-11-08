@@ -4,9 +4,9 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 ## 🏆 Key Findings
 
-- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **1.19s**
-- **Speedup:** skmtc is **9.7x faster** than openapi-ts and **4.0x faster** than orval
-- **Most Consistent:** skmtc has the lowest standard deviation (0.027s)
+- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **1.21s**
+- **Speedup:** skmtc is **9.6x faster** than openapi-ts and **3.9x faster** than orval-zod
+- **Most Consistent:** skmtc has the lowest standard deviation (0.055s)
 
 <!-- BENCHMARK_RESULTS_START -->
 
@@ -14,23 +14,30 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 1.193s | 1.16s | 1.231s | 0.027s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.834s | 4.723s | 5.098s | 0.128s | 4.0x slower |
-| 🥉 #3 | kubb-zod | 7.612s | 7.421s | 7.908s | 0.125s | 6.4x slower |
-| #4 | openapi-ts-zod | 11.562s | 11.281s | 11.899s | 0.229s | 9.7x slower |
+| 🥇 #1 | skmtc-zod | 1.210s | 1.15s | 1.385s | 0.068s | **1.0x** (baseline) |
+| 🥈 #2 | orval-zod | 4.773s | 4.70s | 4.893s | 0.055s | 3.9x slower |
+| 🥉 #3 | kubb-zod | 7.708s | 7.50s | 7.982s | 0.177s | 6.4x slower |
+| #4 | openapi-ts-zod | 11.636s | 11.23s | 12.040s | 0.255s | 9.6x slower |
 
 ## Performance Visualization
 
 ```mermaid
 gantt
-    title Generation Time Comparison (seconds)
+    title 🚀 Generation Time Comparison
     dateFormat X
-    axisFormat %s
-    section Performance
-    skmtc-zod (1.19s) :0, 1
-    orval-zod (4.83s) :0, 4
-    kubb-zod (7.61s) :0, 7
-    openapi-ts-zod (11.56s) :0, 11
+    axisFormat %Ls
+
+    section Skmtc
+    1.21s :0, 1
+
+    section Orval
+    4.77s :0, 4
+
+    section Kubb
+    7.71s :0, 7
+
+    section openapi-ts
+    11.64s :0, 11
 ```
 
 ### Test Environment
