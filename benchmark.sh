@@ -53,21 +53,6 @@ if command -v jq &> /dev/null; then
     echo "## Performance Visualization" >> "$OUTPUT_FILE"
     echo "" >> "$OUTPUT_FILE"
     echo '```mermaid' >> "$OUTPUT_FILE"
-    echo 'graph LR' >> "$OUTPUT_FILE"
-    echo '    subgraph "Generation Time (seconds)"' >> "$OUTPUT_FILE"
-
-    # Create horizontal bar chart using graph
-    jq -r '.results | sort_by(.mean) | .[] | "    \(.command)[\"<b>\(.command)</b><br/>\(.mean | . * 100 | round / 100)s\"] --> |\(.mean | . * 100 | round / 100)s| TIME[\"\"]"' "$RESULTS_JSON" | \
-    awk '{gsub(/skmtc-zod/, "skmtc-zod    "); gsub(/orval-zod/, "orval-zod    "); gsub(/openapi-ts-zod/, "openapi-ts-zod"); gsub(/kubb-zod/, "kubb-zod     "); print}' >> "$OUTPUT_FILE"
-
-    echo '    end' >> "$OUTPUT_FILE"
-    echo '    style TIME fill:transparent,stroke:transparent' >> "$OUTPUT_FILE"
-    echo '```' >> "$OUTPUT_FILE"
-
-    echo "" >> "$OUTPUT_FILE"
-    echo "## Relative Performance" >> "$OUTPUT_FILE"
-    echo "" >> "$OUTPUT_FILE"
-    echo '```mermaid' >> "$OUTPUT_FILE"
     echo '%%{init: {"themeVariables": {"xyChart": {"backgroundColor": "transparent"}}}}%%' >> "$OUTPUT_FILE"
     echo 'xychart-beta horizontal' >> "$OUTPUT_FILE"
     echo '    title "Mean Generation Time (seconds)"' >> "$OUTPUT_FILE"
