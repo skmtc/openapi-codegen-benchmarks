@@ -27,48 +27,122 @@ echo ""
 echo "✅ Benchmarks complete!"
 echo ""
 
-# Generate markdown results
-echo "📊 Generating results table and chart..."
+# Generate markdown results and update README
+echo "📊 Updating README.md with results..."
 echo ""
 
-# Create markdown output
-OUTPUT_FILE="BENCHMARK_RESULTS.md"
+README_FILE="README.md"
 
-cat > "$OUTPUT_FILE" << 'EOF'
-# OpenAPI to Zod Generation Benchmarks
+# Parse JSON and generate content (requires jq)
+if command -v jq &> /dev/null; then
+    # Get fastest time for relative speed calculation
+    FASTEST_TIME=$(jq -r '.results | sort_by(.mean) | .[0].mean' "$RESULTS_JSON")
+    FASTEST_NAME=$(jq -r '.results | sort_by(.mean) | .[0].command' "$RESULTS_JSON")
+    SLOWEST_TIME=$(jq -r '.results | sort_by(.mean) | .[-1].mean' "$RESULTS_JSON")
+    SLOWEST_NAME=$(jq -r '.results | sort_by(.mean) | .[-1].command' "$RESULTS_JSON")
+
+    # Calculate speedup multipliers
+    SPEEDUP_VS_SLOWEST=$(echo "$SLOWEST_TIME / $FASTEST_TIME" | bc -l | xargs printf "%.1f")
+    SECOND_TIME=$(jq -r '.results | sort_by(.mean) | .[1].mean' "$RESULTS_JSON")
+    SECOND_NAME=$(jq -r '.results | sort_by(.mean) | .[1].command' "$RESULTS_JSON")
+    SPEEDUP_VS_SECOND=$(echo "$SECOND_TIME / $FASTEST_TIME" | bc -l | xargs printf "%.1f")
+
+    # Get lowest std dev
+    LOWEST_STDDEV=$(jq -r '.results | sort_by(.stddev) | .[0].stddev | . * 1000 | round / 1000' "$RESULTS_JSON")
+
+    # Current timestamp
+    TIMESTAMP=$(date +"%Y-%m-%d")
+
+    # Create temporary file with new content
+    TEMP_CONTENT=$(mktemp)
+
+    # Generate the results section
+    cat > "$TEMP_CONTENT" << 'MARKER_EOF'
 
 ## Results Summary
 
-EOF
+| Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
+|------|-----------|-----------|----------|----------|---------|----------------|
+MARKER_EOF
 
-# Extract results and create table
-echo "| Framework | Mean Time | Min Time | Max Time | Std Dev |" >> "$OUTPUT_FILE"
-echo "|-----------|-----------|----------|----------|---------|" >> "$OUTPUT_FILE"
+    # Add table rows with ranks and relative speeds
+    RANK=1
+    MEDALS=("🥇 #1" "🥈 #2" "🥉 #3" "#4")
+    jq -r '.results | sort_by(.mean) | .[] | "\(.command)|\(.mean)|\(.min)|\(.max)|\(.stddev)"' "$RESULTS_JSON" | while IFS='|' read -r name mean min max stddev; do
+        MEDAL="${MEDALS[$((RANK-1))]}"
+        RELATIVE=$(echo "$mean / $FASTEST_TIME" | bc -l | xargs printf "%.1f")
 
-# Parse JSON and add rows (requires jq)
-if command -v jq &> /dev/null; then
-    jq -r '.results[] | "| \(.command) | \(.mean | . * 1000 | round / 1000)s | \(.min | . * 1000 | round / 1000)s | \(.max | . * 1000 | round / 1000)s | \(.stddev | . * 1000 | round / 1000)s |"' "$RESULTS_JSON" >> "$OUTPUT_FILE"
+        MEAN_FORMATTED=$(echo "$mean * 1000" | bc -l | xargs printf "%.0f" | awk '{printf "%.3f", $1/1000}')
+        MIN_FORMATTED=$(echo "$min * 1000" | bc -l | xargs printf "%.0f" | awk '{printf "%.2f", $1/1000}')
+        MAX_FORMATTED=$(echo "$max * 1000" | bc -l | xargs printf "%.0f" | awk '{printf "%.3f", $1/1000}')
+        STDDEV_FORMATTED=$(echo "$stddev * 1000" | bc -l | xargs printf "%.0f" | awk '{printf "%.3f", $1/1000}')
 
-    echo "" >> "$OUTPUT_FILE"
-    echo "## Performance Visualization" >> "$OUTPUT_FILE"
-    echo "" >> "$OUTPUT_FILE"
-    echo '```mermaid' >> "$OUTPUT_FILE"
-    echo 'gantt' >> "$OUTPUT_FILE"
-    echo '    title Generation Time Comparison (seconds)' >> "$OUTPUT_FILE"
-    echo '    dateFormat X' >> "$OUTPUT_FILE"
-    echo '    axisFormat %s' >> "$OUTPUT_FILE"
-    echo '    section Performance' >> "$OUTPUT_FILE"
+        if [ "$RANK" -eq 1 ]; then
+            echo "| $MEDAL | $name | ${MEAN_FORMATTED}s | ${MIN_FORMATTED}s | ${MAX_FORMATTED}s | ${STDDEV_FORMATTED}s | **1.0x** (baseline) |" >> "$TEMP_CONTENT"
+        else
+            echo "| $MEDAL | $name | ${MEAN_FORMATTED}s | ${MIN_FORMATTED}s | ${MAX_FORMATTED}s | ${STDDEV_FORMATTED}s | ${RELATIVE}x slower |" >> "$TEMP_CONTENT"
+        fi
 
-    # Generate Gantt chart bars sorted by mean time
-    jq -r '.results | sort_by(.mean) | .[] | "    \(.command) (\(.mean | . * 100 | round / 100)s) :0, \(.mean | floor)"' "$RESULTS_JSON" >> "$OUTPUT_FILE"
+        RANK=$((RANK+1))
+    done
 
-    echo '```' >> "$OUTPUT_FILE"
+    # Add visualization
+    cat >> "$TEMP_CONTENT" << 'MARKER_EOF'
 
+## Performance Visualization
+
+```mermaid
+gantt
+    title Generation Time Comparison (seconds)
+    dateFormat X
+    axisFormat %s
+    section Performance
+MARKER_EOF
+
+    # Generate Gantt chart bars
+    jq -r '.results | sort_by(.mean) | .[] | "    \(.command) (\(.mean | . * 100 | round / 100)s) :0, \(.mean | floor)"' "$RESULTS_JSON" >> "$TEMP_CONTENT"
+
+    cat >> "$TEMP_CONTENT" << 'MARKER_EOF'
+```
+
+### Test Environment
+
+- **Test Specification:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
+- **Iterations:** 10 runs per tool with 1 warmup run
+MARKER_EOF
+
+    echo "- **Last Updated:** $TIMESTAMP" >> "$TEMP_CONTENT"
+    echo "" >> "$TEMP_CONTENT"
+
+    # Extract content before and after markers
+    BEFORE=$(sed -n '1,/<!-- BENCHMARK_RESULTS_START -->/p' "$README_FILE")
+    AFTER=$(sed -n '/<!-- BENCHMARK_RESULTS_END -->/,$p' "$README_FILE")
+
+    # Update Key Findings section in BEFORE content
+    FASTEST_MEAN=$(echo "$FASTEST_TIME * 100" | bc -l | xargs printf "%.0f" | awk '{printf "%.2f", $1/100}')
+
+    BEFORE=$(echo "$BEFORE" | sed -E "s/generates schemas in \*\*[0-9.]+s\*\*/generates schemas in **${FASTEST_MEAN}s**/")
+    BEFORE=$(echo "$BEFORE" | sed -E "s/is \*\*[0-9.]+x faster\*\* than/is **${SPEEDUP_VS_SLOWEST}x faster** than/")
+    BEFORE=$(echo "$BEFORE" | sed -E "s/\*\*[0-9.]+x faster\*\* than orval/**${SPEEDUP_VS_SECOND}x faster** than ${SECOND_NAME}/")
+    BEFORE=$(echo "$BEFORE" | sed -E "s/standard deviation \([0-9.]+s\)/standard deviation (${LOWEST_STDDEV}s)/")
+
+    # Reconstruct README
+    {
+        echo "$BEFORE"
+        cat "$TEMP_CONTENT"
+        echo "$AFTER"
+    } > "$README_FILE"
+
+    # Clean up
+    rm "$TEMP_CONTENT"
+
+    echo "✅ README.md updated successfully!"
     echo ""
-    echo "📄 Results saved to $OUTPUT_FILE"
-    echo ""
-    cat "$OUTPUT_FILE"
+    echo "📊 Results:"
+    echo "  🏆 Fastest: $FASTEST_NAME (${FASTEST_MEAN}s)"
+    echo "  📈 Speedup: ${SPEEDUP_VS_SLOWEST}x faster than $SLOWEST_NAME"
+    echo "  📅 Updated: $TIMESTAMP"
 else
-    echo "⚠️  jq not found. Install jq to generate formatted results."
+    echo "⚠️  jq not found. Install jq to update README.md with results."
     echo "   Raw results available in $RESULTS_JSON"
 fi
