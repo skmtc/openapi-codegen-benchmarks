@@ -20,8 +20,8 @@ hyperfine \
   --prepare 'rm -rf orval-zod/src/gen/* openapi-ts-zod/src/client/* kubb-zod/src/gen/* skmtc-zod-output/*' \
   -n skmtc-zod 'deno run -A --unstable-worker-options jsr:@skmtc/cli@0.0.381 generate skmtc-zod .skmtc/openapi.json' \
   -n orval-zod 'cd orval-zod && pnpm generate:api:github' \
-  -n openapi-ts-zod 'cd openapi-ts-zod && pnpm generate:api' \
-  -n kubb-zod 'cd kubb-zod && pnpm generate'
+  -n kubb-zod 'cd kubb-zod && pnpm generate' \
+  -n openapi-ts-zod 'cd openapi-ts-zod && pnpm generate:api'
 
 echo ""
 echo "✅ Benchmarks complete!"
