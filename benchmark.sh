@@ -53,16 +53,15 @@ if command -v jq &> /dev/null; then
     echo "## Performance Visualization" >> "$OUTPUT_FILE"
     echo "" >> "$OUTPUT_FILE"
     echo '```mermaid' >> "$OUTPUT_FILE"
-    echo '%%{init: {"themeVariables": {"xyChart": {"backgroundColor": "transparent"}}}}%%' >> "$OUTPUT_FILE"
-    echo 'xychart-beta horizontal' >> "$OUTPUT_FILE"
-    echo '    title "Mean Generation Time (seconds)"' >> "$OUTPUT_FILE"
-    echo '    x-axis [0, 2, 4, 6, 8, 10, 12, 14]' >> "$OUTPUT_FILE"
-    echo -n '    y-axis "Framework" [' >> "$OUTPUT_FILE"
-    jq -r '.results | sort_by(.mean) | .[].command' "$RESULTS_JSON" | tr '\n' ',' | sed 's/,$//' | sed 's/,/", "/g' | sed 's/^/"/' | sed 's/$/"/' >> "$OUTPUT_FILE"
-    echo ']' >> "$OUTPUT_FILE"
-    echo -n '    bar [' >> "$OUTPUT_FILE"
-    jq -r '.results | sort_by(.mean) | .[].mean | . * 100 | round / 100' "$RESULTS_JSON" | tr '\n' ',' | sed 's/,$//' >> "$OUTPUT_FILE"
-    echo ']' >> "$OUTPUT_FILE"
+    echo 'gantt' >> "$OUTPUT_FILE"
+    echo '    title Generation Time Comparison (seconds)' >> "$OUTPUT_FILE"
+    echo '    dateFormat X' >> "$OUTPUT_FILE"
+    echo '    axisFormat %s' >> "$OUTPUT_FILE"
+    echo '    section Performance' >> "$OUTPUT_FILE"
+
+    # Generate Gantt chart bars sorted by mean time
+    jq -r '.results | sort_by(.mean) | .[] | "    \(.command) (\(.mean | . * 100 | round / 100)s) :0, \(.mean | floor)"' "$RESULTS_JSON" >> "$OUTPUT_FILE"
+
     echo '```' >> "$OUTPUT_FILE"
 
     echo ""
