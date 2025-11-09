@@ -1,9 +1,8 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@skmtc/core@^0.0.964": "0.0.964",
-    "jsr:@skmtc/worker@*": "0.0.36",
-    "jsr:@skmtc/worker@^0.0.36": "0.0.36",
+    "jsr:@skmtc/core@^0.0.965": "0.0.965",
+    "jsr:@skmtc/worker@^0.0.37": "0.0.37",
     "jsr:@std/fmt@^1.0.5": "1.0.8",
     "jsr:@std/fs@^1.0.11": "1.0.19",
     "jsr:@std/internal@^1.0.10": "1.0.12",
@@ -21,8 +20,8 @@
     "npm:valibot@1.1.0": "1.1.0"
   },
   "jsr": {
-    "@skmtc/core@0.0.964": {
-      "integrity": "22504c5e800e4054f1549c2a2c214929f32f0ab4995f35913aff93c65692097f",
+    "@skmtc/core@0.0.965": {
+      "integrity": "af9f1a5782ab267ef6edd372233c1cae47e258fcc58ad398d036246b8be3cecc",
       "dependencies": [
         "jsr:@std/log",
         "jsr:@std/path@^1.0.9",
@@ -35,8 +34,8 @@
         "npm:valibot"
       ]
     },
-    "@skmtc/worker@0.0.36": {
-      "integrity": "151a937aa2d63d99d4cf134bd04277156126380cb4f53a4b55f3136e58207a4c",
+    "@skmtc/worker@0.0.37": {
+      "integrity": "9dfd25cf82521b0173f34bbe66f24ee9c49222314c12a049068856fb598db6b2",
       "dependencies": [
         "jsr:@skmtc/core"
       ]
@@ -99,8 +98,8 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@skmtc/core@^0.0.964",
-      "jsr:@skmtc/worker@^0.0.36",
+      "jsr:@skmtc/core@^0.0.965",
+      "jsr:@skmtc/worker@^0.0.37",
       "jsr:@std/path@^1.1.2",
       "npm:openapi-types@^12.1.3",
       "npm:tiny-invariant@^1.3.3",
