@@ -5,7 +5,7 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 ## 🏆 Key Findings
 
 - **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.41s**
-- **Speedup:** skmtc is **27.9x faster** than openapi-ts and **10.5x faster** than orval-zod
+- **Speedup:** skmtc is **27.9x faster** than openapi-ts and **10.5x faster** than orval
 - **Most Consistent:** skmtc has the lowest standard deviation (0.011s)
 
 <!-- BENCHMARK_RESULTS_START -->
