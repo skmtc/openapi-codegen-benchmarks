@@ -95,7 +95,6 @@ MARKER_EOF
 gantt
     title 🚀 Generation Time Comparison
     dateFormat X
-    axisFormat %.1f
 MARKER_EOF
 
     # Generate Gantt chart with separate sections per tool for better readability
