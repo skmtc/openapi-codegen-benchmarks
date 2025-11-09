@@ -24,9 +24,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/identifier.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/identifier.js
 var require_identifier = __commonJS({
-  "../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/identifier.js"(exports) {
+  "../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/identifier.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -961,10 +961,10 @@ var require_identifier = __commonJS({
     ];
     function isInAstralSet(code2, set2) {
       let pos = 65536;
-      for (let i2 = 0, length = set2.length; i2 < length; i2 += 2) {
-        pos += set2[i2];
+      for (let i = 0, length = set2.length; i < length; i += 2) {
+        pos += set2[i];
         if (pos > code2) return false;
-        pos += set2[i2 + 1];
+        pos += set2[i + 1];
         if (pos >= code2) return true;
       }
       return false;
@@ -993,10 +993,10 @@ var require_identifier = __commonJS({
     }
     function isIdentifierName4(name) {
       let isFirst = true;
-      for (let i2 = 0; i2 < name.length; i2++) {
-        let cp = name.charCodeAt(i2);
-        if ((cp & 64512) === 55296 && i2 + 1 < name.length) {
-          const trail = name.charCodeAt(++i2);
+      for (let i = 0; i < name.length; i++) {
+        let cp = name.charCodeAt(i);
+        if ((cp & 64512) === 55296 && i + 1 < name.length) {
+          const trail = name.charCodeAt(++i);
           if ((trail & 64512) === 56320) {
             cp = 65536 + ((cp & 1023) << 10) + (trail & 1023);
           }
@@ -1015,9 +1015,9 @@ var require_identifier = __commonJS({
   }
 });
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/keyword.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/keyword.js
 var require_keyword = __commonJS({
-  "../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/keyword.js"(exports) {
+  "../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/keyword.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -1102,9 +1102,9 @@ var require_keyword = __commonJS({
   }
 });
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/index.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/index.js
 var require_lib = __commonJS({
-  "../../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/index.js"(exports) {
+  "../../../../Library/Caches/deno/npm/registry.npmjs.org/@babel/helper-validator-identifier/7.27.1/lib/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -1162,504 +1162,6 @@ var require_lib = __commonJS({
   }
 });
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/ts-pattern/5.9.0/dist/index.js
-var t = Symbol.for("@ts-pattern/matcher");
-var e = Symbol.for("@ts-pattern/isVariadic");
-var n = "@ts-pattern/anonymous-select-key";
-var r = (t2) => Boolean(t2 && "object" == typeof t2);
-var i = (e2) => e2 && !!e2[t];
-var o = (n2, s2, c2) => {
-  if (i(n2)) {
-    const e2 = n2[t](), { matched: r2, selections: i2 } = e2.match(s2);
-    return r2 && i2 && Object.keys(i2).forEach((t2) => c2(t2, i2[t2])), r2;
-  }
-  if (r(n2)) {
-    if (!r(s2)) return false;
-    if (Array.isArray(n2)) {
-      if (!Array.isArray(s2)) return false;
-      let t2 = [], r2 = [], u2 = [];
-      for (const o2 of n2.keys()) {
-        const s3 = n2[o2];
-        i(s3) && s3[e] ? u2.push(s3) : u2.length ? r2.push(s3) : t2.push(s3);
-      }
-      if (u2.length) {
-        if (u2.length > 1) throw new Error("Pattern error: Using `...P.array(...)` several times in a single pattern is not allowed.");
-        if (s2.length < t2.length + r2.length) return false;
-        const e2 = s2.slice(0, t2.length), n3 = 0 === r2.length ? [] : s2.slice(-r2.length), i2 = s2.slice(t2.length, 0 === r2.length ? Infinity : -r2.length);
-        return t2.every((t3, n4) => o(t3, e2[n4], c2)) && r2.every((t3, e3) => o(t3, n3[e3], c2)) && (0 === u2.length || o(u2[0], i2, c2));
-      }
-      return n2.length === s2.length && n2.every((t3, e2) => o(t3, s2[e2], c2));
-    }
-    return Reflect.ownKeys(n2).every((e2) => {
-      const r2 = n2[e2];
-      return (e2 in s2 || i(u2 = r2) && "optional" === u2[t]().matcherType) && o(r2, s2[e2], c2);
-      var u2;
-    });
-  }
-  return Object.is(s2, n2);
-};
-var s = (e2) => {
-  var n2, o2, u2;
-  return r(e2) ? i(e2) ? null != (n2 = null == (o2 = (u2 = e2[t]()).getSelectionKeys) ? void 0 : o2.call(u2)) ? n2 : [] : Array.isArray(e2) ? c(e2, s) : c(Object.values(e2), s) : [];
-};
-var c = (t2, e2) => t2.reduce((t3, n2) => t3.concat(e2(n2)), []);
-function u(...t2) {
-  if (1 === t2.length) {
-    const [e2] = t2;
-    return (t3) => o(e2, t3, () => {
-    });
-  }
-  if (2 === t2.length) {
-    const [e2, n2] = t2;
-    return o(e2, n2, () => {
-    });
-  }
-  throw new Error(`isMatching wasn't given the right number of arguments: expected 1 or 2, received ${t2.length}.`);
-}
-function a(t2) {
-  return Object.assign(t2, {
-    optional: () => h(t2),
-    and: (e2) => d(t2, e2),
-    or: (e2) => y(t2, e2),
-    select: (e2) => void 0 === e2 ? v(t2) : v(e2, t2)
-  });
-}
-function l(t2) {
-  return Object.assign(((t3) => Object.assign(t3, {
-    [Symbol.iterator]() {
-      let n2 = 0;
-      const r2 = [
-        {
-          value: Object.assign(t3, {
-            [e]: true
-          }),
-          done: false
-        },
-        {
-          done: true,
-          value: void 0
-        }
-      ];
-      return {
-        next: () => {
-          var t4;
-          return null != (t4 = r2[n2++]) ? t4 : r2.at(-1);
-        }
-      };
-    }
-  }))(t2), {
-    optional: () => l(h(t2)),
-    select: (e2) => l(void 0 === e2 ? v(t2) : v(e2, t2))
-  });
-}
-function h(e2) {
-  return a({
-    [t]: () => ({
-      match: (t2) => {
-        let n2 = {};
-        const r2 = (t3, e3) => {
-          n2[t3] = e3;
-        };
-        return void 0 === t2 ? (s(e2).forEach((t3) => r2(t3, void 0)), {
-          matched: true,
-          selections: n2
-        }) : {
-          matched: o(e2, t2, r2),
-          selections: n2
-        };
-      },
-      getSelectionKeys: () => s(e2),
-      matcherType: "optional"
-    })
-  });
-}
-var f = (t2, e2) => {
-  for (const n2 of t2) if (!e2(n2)) return false;
-  return true;
-};
-var g = (t2, e2) => {
-  for (const [n2, r2] of t2.entries()) if (!e2(r2, n2)) return false;
-  return true;
-};
-var m = (t2, e2) => {
-  const n2 = Reflect.ownKeys(t2);
-  for (const r2 of n2) if (!e2(r2, t2[r2])) return false;
-  return true;
-};
-function d(...e2) {
-  return a({
-    [t]: () => ({
-      match: (t2) => {
-        let n2 = {};
-        const r2 = (t3, e3) => {
-          n2[t3] = e3;
-        };
-        return {
-          matched: e2.every((e3) => o(e3, t2, r2)),
-          selections: n2
-        };
-      },
-      getSelectionKeys: () => c(e2, s),
-      matcherType: "and"
-    })
-  });
-}
-function y(...e2) {
-  return a({
-    [t]: () => ({
-      match: (t2) => {
-        let n2 = {};
-        const r2 = (t3, e3) => {
-          n2[t3] = e3;
-        };
-        return c(e2, s).forEach((t3) => r2(t3, void 0)), {
-          matched: e2.some((e3) => o(e3, t2, r2)),
-          selections: n2
-        };
-      },
-      getSelectionKeys: () => c(e2, s),
-      matcherType: "or"
-    })
-  });
-}
-function p(e2) {
-  return {
-    [t]: () => ({
-      match: (t2) => ({
-        matched: Boolean(e2(t2))
-      })
-    })
-  };
-}
-function v(...e2) {
-  const r2 = "string" == typeof e2[0] ? e2[0] : void 0, i2 = 2 === e2.length ? e2[1] : "string" == typeof e2[0] ? void 0 : e2[0];
-  return a({
-    [t]: () => ({
-      match: (t2) => {
-        let e3 = {
-          [null != r2 ? r2 : n]: t2
-        };
-        return {
-          matched: void 0 === i2 || o(i2, t2, (t3, n2) => {
-            e3[t3] = n2;
-          }),
-          selections: e3
-        };
-      },
-      getSelectionKeys: () => [
-        null != r2 ? r2 : n
-      ].concat(void 0 === i2 ? [] : s(i2))
-    })
-  });
-}
-function b(t2) {
-  return true;
-}
-function w(t2) {
-  return "number" == typeof t2;
-}
-function S(t2) {
-  return "string" == typeof t2;
-}
-function j(t2) {
-  return "bigint" == typeof t2;
-}
-var K = a(p(b));
-var O = a(p(b));
-var E = K;
-var x = (t2) => Object.assign(a(t2), {
-  startsWith: (e2) => {
-    return x(d(t2, (n2 = e2, p((t3) => S(t3) && t3.startsWith(n2)))));
-    var n2;
-  },
-  endsWith: (e2) => {
-    return x(d(t2, (n2 = e2, p((t3) => S(t3) && t3.endsWith(n2)))));
-    var n2;
-  },
-  minLength: (e2) => x(d(t2, ((t3) => p((e3) => S(e3) && e3.length >= t3))(e2))),
-  length: (e2) => x(d(t2, ((t3) => p((e3) => S(e3) && e3.length === t3))(e2))),
-  maxLength: (e2) => x(d(t2, ((t3) => p((e3) => S(e3) && e3.length <= t3))(e2))),
-  includes: (e2) => {
-    return x(d(t2, (n2 = e2, p((t3) => S(t3) && t3.includes(n2)))));
-    var n2;
-  },
-  regex: (e2) => {
-    return x(d(t2, (n2 = e2, p((t3) => S(t3) && Boolean(t3.match(n2))))));
-    var n2;
-  }
-});
-var A = x(p(S));
-var N = (t2) => Object.assign(a(t2), {
-  between: (e2, n2) => N(d(t2, ((t3, e3) => p((n3) => w(n3) && t3 <= n3 && e3 >= n3))(e2, n2))),
-  lt: (e2) => N(d(t2, ((t3) => p((e3) => w(e3) && e3 < t3))(e2))),
-  gt: (e2) => N(d(t2, ((t3) => p((e3) => w(e3) && e3 > t3))(e2))),
-  lte: (e2) => N(d(t2, ((t3) => p((e3) => w(e3) && e3 <= t3))(e2))),
-  gte: (e2) => N(d(t2, ((t3) => p((e3) => w(e3) && e3 >= t3))(e2))),
-  int: () => N(d(t2, p((t3) => w(t3) && Number.isInteger(t3)))),
-  finite: () => N(d(t2, p((t3) => w(t3) && Number.isFinite(t3)))),
-  positive: () => N(d(t2, p((t3) => w(t3) && t3 > 0))),
-  negative: () => N(d(t2, p((t3) => w(t3) && t3 < 0)))
-});
-var P = N(p(w));
-var k = (t2) => Object.assign(a(t2), {
-  between: (e2, n2) => k(d(t2, ((t3, e3) => p((n3) => j(n3) && t3 <= n3 && e3 >= n3))(e2, n2))),
-  lt: (e2) => k(d(t2, ((t3) => p((e3) => j(e3) && e3 < t3))(e2))),
-  gt: (e2) => k(d(t2, ((t3) => p((e3) => j(e3) && e3 > t3))(e2))),
-  lte: (e2) => k(d(t2, ((t3) => p((e3) => j(e3) && e3 <= t3))(e2))),
-  gte: (e2) => k(d(t2, ((t3) => p((e3) => j(e3) && e3 >= t3))(e2))),
-  positive: () => k(d(t2, p((t3) => j(t3) && t3 > 0))),
-  negative: () => k(d(t2, p((t3) => j(t3) && t3 < 0)))
-});
-var T = k(p(j));
-var B = a(p(function(t2) {
-  return "boolean" == typeof t2;
-}));
-var _ = a(p(function(t2) {
-  return "symbol" == typeof t2;
-}));
-var W = a(p(function(t2) {
-  return null == t2;
-}));
-var $ = a(p(function(t2) {
-  return null != t2;
-}));
-var z = {
-  __proto__: null,
-  matcher: t,
-  optional: h,
-  array: function(...e2) {
-    return l({
-      [t]: () => ({
-        match: (t2) => {
-          if (!Array.isArray(t2)) return {
-            matched: false
-          };
-          if (0 === e2.length) return {
-            matched: true
-          };
-          const n2 = e2[0];
-          let r2 = {};
-          if (0 === t2.length) return s(n2).forEach((t3) => {
-            r2[t3] = [];
-          }), {
-            matched: true,
-            selections: r2
-          };
-          const i2 = (t3, e3) => {
-            r2[t3] = (r2[t3] || []).concat([
-              e3
-            ]);
-          };
-          return {
-            matched: t2.every((t3) => o(n2, t3, i2)),
-            selections: r2
-          };
-        },
-        getSelectionKeys: () => 0 === e2.length ? [] : s(e2[0])
-      })
-    });
-  },
-  set: function(...e2) {
-    return a({
-      [t]: () => ({
-        match: (t2) => {
-          if (!(t2 instanceof Set)) return {
-            matched: false
-          };
-          let n2 = {};
-          if (0 === t2.size) return {
-            matched: true,
-            selections: n2
-          };
-          if (0 === e2.length) return {
-            matched: true
-          };
-          const r2 = (t3, e3) => {
-            n2[t3] = (n2[t3] || []).concat([
-              e3
-            ]);
-          }, i2 = e2[0];
-          return {
-            matched: f(t2, (t3) => o(i2, t3, r2)),
-            selections: n2
-          };
-        },
-        getSelectionKeys: () => 0 === e2.length ? [] : s(e2[0])
-      })
-    });
-  },
-  map: function(...e2) {
-    return a({
-      [t]: () => ({
-        match: (t2) => {
-          if (!(t2 instanceof Map)) return {
-            matched: false
-          };
-          let n2 = {};
-          if (0 === t2.size) return {
-            matched: true,
-            selections: n2
-          };
-          const r2 = (t3, e3) => {
-            n2[t3] = (n2[t3] || []).concat([
-              e3
-            ]);
-          };
-          if (0 === e2.length) return {
-            matched: true
-          };
-          var i2;
-          if (1 === e2.length) throw new Error(`\`P.map\` wasn't given enough arguments. Expected (key, value), received ${null == (i2 = e2[0]) ? void 0 : i2.toString()}`);
-          const [s2, c2] = e2;
-          return {
-            matched: g(t2, (t3, e3) => {
-              const n3 = o(s2, e3, r2), i3 = o(c2, t3, r2);
-              return n3 && i3;
-            }),
-            selections: n2
-          };
-        },
-        getSelectionKeys: () => 0 === e2.length ? [] : [
-          ...s(e2[0]),
-          ...s(e2[1])
-        ]
-      })
-    });
-  },
-  record: function(...e2) {
-    return a({
-      [t]: () => ({
-        match: (t2) => {
-          if (null === t2 || "object" != typeof t2 || Array.isArray(t2)) return {
-            matched: false
-          };
-          var n2;
-          if (0 === e2.length) throw new Error(`\`P.record\` wasn't given enough arguments. Expected (value) or (key, value), received ${null == (n2 = e2[0]) ? void 0 : n2.toString()}`);
-          let r2 = {};
-          const i2 = (t3, e3) => {
-            r2[t3] = (r2[t3] || []).concat([
-              e3
-            ]);
-          }, [s2, c2] = 1 === e2.length ? [
-            A,
-            e2[0]
-          ] : e2;
-          return {
-            matched: m(t2, (t3, e3) => {
-              const n3 = "string" != typeof t3 || Number.isNaN(Number(t3)) ? null : Number(t3), r3 = null !== n3 && o(s2, n3, i2), u2 = o(s2, t3, i2), a2 = o(c2, e3, i2);
-              return (u2 || r3) && a2;
-            }),
-            selections: r2
-          };
-        },
-        getSelectionKeys: () => 0 === e2.length ? [] : [
-          ...s(e2[0]),
-          ...s(e2[1])
-        ]
-      })
-    });
-  },
-  intersection: d,
-  union: y,
-  not: function(e2) {
-    return a({
-      [t]: () => ({
-        match: (t2) => ({
-          matched: !o(e2, t2, () => {
-          })
-        }),
-        getSelectionKeys: () => [],
-        matcherType: "not"
-      })
-    });
-  },
-  when: p,
-  select: v,
-  any: K,
-  unknown: O,
-  _: E,
-  string: A,
-  number: P,
-  bigint: T,
-  boolean: B,
-  symbol: _,
-  nullish: W,
-  nonNullable: $,
-  instanceOf: function(t2) {
-    return a(p(/* @__PURE__ */ function(t3) {
-      return (e2) => e2 instanceof t3;
-    }(t2)));
-  },
-  shape: function(t2) {
-    return a(p(u(t2)));
-  }
-};
-var I = class extends Error {
-  constructor(t2) {
-    let e2;
-    try {
-      e2 = JSON.stringify(t2);
-    } catch (n2) {
-      e2 = t2;
-    }
-    super(`Pattern matching error: no pattern matches value ${e2}`), this.input = void 0, this.input = t2;
-  }
-};
-var L = {
-  matched: false,
-  value: void 0
-};
-function M(t2) {
-  return new R(t2, L);
-}
-var R = class _R {
-  constructor(t2, e2) {
-    this.input = void 0, this.state = void 0, this.input = t2, this.state = e2;
-  }
-  with(...t2) {
-    if (this.state.matched) return this;
-    const e2 = t2[t2.length - 1], r2 = [
-      t2[0]
-    ];
-    let i2;
-    3 === t2.length && "function" == typeof t2[1] ? i2 = t2[1] : t2.length > 2 && r2.push(...t2.slice(1, t2.length - 1));
-    let s2 = false, c2 = {};
-    const u2 = (t3, e3) => {
-      s2 = true, c2[t3] = e3;
-    }, a2 = !r2.some((t3) => o(t3, this.input, u2)) || i2 && !Boolean(i2(this.input)) ? L : {
-      matched: true,
-      value: e2(s2 ? n in c2 ? c2[n] : c2 : this.input, this.input)
-    };
-    return new _R(this.input, a2);
-  }
-  when(t2, e2) {
-    if (this.state.matched) return this;
-    const n2 = Boolean(t2(this.input));
-    return new _R(this.input, n2 ? {
-      matched: true,
-      value: e2(this.input, this.input)
-    } : L);
-  }
-  otherwise(t2) {
-    return this.state.matched ? this.state.value : t2(this.input);
-  }
-  exhaustive(t2 = F) {
-    return this.state.matched ? this.state.value : t2(this.input);
-  }
-  run() {
-    return this.exhaustive();
-  }
-  returnType() {
-    return this;
-  }
-  narrow() {
-    return this;
-  }
-};
-function F(t2) {
-  throw new I(t2);
-}
-
 // deno:https://jsr.io/@std/internal/1.0.12/_os.ts
 function checkWindows() {
   const global2 = globalThis;
@@ -1700,13 +1202,13 @@ function normalizeString(path, allowAboveRoot, separator, isPathSeparator2) {
   let lastSlash = -1;
   let dots = 0;
   let code2;
-  for (let i2 = 0; i2 <= path.length; ++i2) {
-    if (i2 < path.length) code2 = path.charCodeAt(i2);
+  for (let i = 0; i <= path.length; ++i) {
+    if (i < path.length) code2 = path.charCodeAt(i);
     else if (isPathSeparator2(code2)) break;
     else code2 = CHAR_FORWARD_SLASH;
     if (isPathSeparator2(code2)) {
-      if (lastSlash === i2 - 1 || dots === 1) {
-      } else if (lastSlash !== i2 - 1 && dots === 2) {
+      if (lastSlash === i - 1 || dots === 1) {
+      } else if (lastSlash !== i - 1 && dots === 2) {
         if (res.length < 2 || lastSegmentLength !== 2 || res.charCodeAt(res.length - 1) !== CHAR_DOT || res.charCodeAt(res.length - 2) !== CHAR_DOT) {
           if (res.length > 2) {
             const lastSlashIndex = res.lastIndexOf(separator);
@@ -1717,13 +1219,13 @@ function normalizeString(path, allowAboveRoot, separator, isPathSeparator2) {
               res = res.slice(0, lastSlashIndex);
               lastSegmentLength = res.length - 1 - res.lastIndexOf(separator);
             }
-            lastSlash = i2;
+            lastSlash = i;
             dots = 0;
             continue;
           } else if (res.length === 2 || res.length === 1) {
             res = "";
             lastSegmentLength = 0;
-            lastSlash = i2;
+            lastSlash = i;
             dots = 0;
             continue;
           }
@@ -1734,11 +1236,11 @@ function normalizeString(path, allowAboveRoot, separator, isPathSeparator2) {
           lastSegmentLength = 2;
         }
       } else {
-        if (res.length > 0) res += separator + path.slice(lastSlash + 1, i2);
-        else res = path.slice(lastSlash + 1, i2);
-        lastSegmentLength = i2 - lastSlash - 1;
+        if (res.length > 0) res += separator + path.slice(lastSlash + 1, i);
+        else res = path.slice(lastSlash + 1, i);
+        lastSegmentLength = i - lastSlash - 1;
       }
-      lastSlash = i2;
+      lastSlash = i;
       dots = 0;
     } else if (code2 === CHAR_DOT && dots !== -1) {
       ++dots;
@@ -1817,27 +1319,27 @@ function normalize2(path) {
     if (isPathSeparator(code2)) {
       isAbsolute3 = true;
       if (isPathSeparator(path.charCodeAt(1))) {
-        let j2 = 2;
-        let last = j2;
-        for (; j2 < len; ++j2) {
-          if (isPathSeparator(path.charCodeAt(j2))) break;
+        let j = 2;
+        let last = j;
+        for (; j < len; ++j) {
+          if (isPathSeparator(path.charCodeAt(j))) break;
         }
-        if (j2 < len && j2 !== last) {
-          const firstPart = path.slice(last, j2);
-          last = j2;
-          for (; j2 < len; ++j2) {
-            if (!isPathSeparator(path.charCodeAt(j2))) break;
+        if (j < len && j !== last) {
+          const firstPart = path.slice(last, j);
+          last = j;
+          for (; j < len; ++j) {
+            if (!isPathSeparator(path.charCodeAt(j))) break;
           }
-          if (j2 < len && j2 !== last) {
-            last = j2;
-            for (; j2 < len; ++j2) {
-              if (isPathSeparator(path.charCodeAt(j2))) break;
+          if (j < len && j !== last) {
+            last = j;
+            for (; j < len; ++j) {
+              if (isPathSeparator(path.charCodeAt(j))) break;
             }
-            if (j2 === len) {
+            if (j === len) {
               return `\\\\${firstPart}\\${path.slice(last)}\\`;
-            } else if (j2 !== last) {
-              device = `\\\\${firstPart}\\${path.slice(last, j2)}`;
-              rootEnd = j2;
+            } else if (j !== last) {
+              device = `\\\\${firstPart}\\${path.slice(last, j)}`;
+              rootEnd = j;
             }
           }
         }
@@ -1887,7 +1389,7 @@ function normalize3(path) {
   return isWindows ? normalize2(path) : normalize(path);
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/Import.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/Import.ts
 var Import = class {
   /** The module path to import from */
   module;
@@ -2006,8 +1508,8 @@ var ImportName = class {
     if (typeof name === "string") {
       this.name = name;
     } else {
-      const [n2, alias] = Object.entries(name)[0];
-      this.name = n2;
+      const [n, alias] = Object.entries(name)[0];
+      this.name = n;
       this.alias = alias;
     }
   }
@@ -2037,7 +1539,7 @@ var ImportName = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/ContentBase.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/ContentBase.ts
 var ContentBase = class {
   /** The generation context providing access to OAS objects and utilities */
   context;
@@ -2093,13 +1595,13 @@ var ContentBase = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/typescript/withDescription.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/typescript/withDescription.ts
 var withDescription = (value, { description }) => {
   return description ? `/** ${description} */
 ${value}` : `${value}`;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/Definition.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/Definition.ts
 var Definition = class extends ContentBase {
   /** The identifier for this definition */
   identifier;
@@ -2196,7 +1698,7 @@ var Definition = class extends ContentBase {
   }
 };
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/valibot/1.1.0/dist/index.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/valibot/1.1.0/dist/index.js
 var store;
 // @__NO_SIDE_EFFECTS__
 function getGlobalConfig(config2) {
@@ -3165,7 +2667,7 @@ function pipe(...pipe2) {
   };
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Method.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Method.ts
 var methodValues = [
   "get",
   "put",
@@ -3188,7 +2690,7 @@ var method = union([
 ]);
 var methods = array(method);
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/GeneratorKeys.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/GeneratorKeys.ts
 var toOperationGeneratorKey = ({ generatorId, ...rest }) => {
   const { path, method: method2 } = "operation" in rest ? rest.operation : rest;
   const nakedKey = `${generatorId}|${path}|${method2}`;
@@ -3203,7 +2705,7 @@ var toGeneratorOnlyKey = ({ generatorId }) => {
   return nakedKey;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/operation/OperationDriver.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/operation/OperationDriver.ts
 var OperationDriver = class {
   /** The generation context providing access to OAS objects and utilities */
   context;
@@ -3339,7 +2841,7 @@ var OperationDriver = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/model/ModelDriver.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/model/ModelDriver.ts
 var ModelDriver = class {
   /** The generation context */
   context;
@@ -3480,7 +2982,7 @@ var ModelDriver = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/ContentSettings.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/ContentSettings.ts
 var ContentSettings = class _ContentSettings {
   /** The identifier for the content being generated */
   identifier;
@@ -3557,7 +3059,7 @@ var ContentSettings = class _ContentSettings {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/Inserted.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/Inserted.ts
 var Inserted = class {
   /** Content settings including identifier and export path */
   settings;
@@ -3658,7 +3160,7 @@ var Inserted = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/File.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/File.ts
 var File2 = class {
   /** The file type, always 'ts' for TypeScript files */
   fileType = "ts";
@@ -3787,7 +3289,7 @@ var normaliseModuleName = ({ destinationPath, exportPath, packages = [] }) => {
   return moduleName;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/JsonFile.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/JsonFile.ts
 var JsonFile = class {
   /** The file type, always 'json' for JSON files */
   fileType = "json";
@@ -3846,7 +3348,7 @@ var JsonFile = class {
   }
 };
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/tiny-invariant/1.3.3/dist/esm/tiny-invariant.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/tiny-invariant/1.3.3/dist/esm/tiny-invariant.js
 var isProduction = false;
 var prefix = "Invariant failed";
 function invariant(condition, message) {
@@ -3861,7 +3363,7 @@ function invariant(condition, message) {
   throw new Error(value);
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/GenerateContext.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/GenerateContext.ts
 var GenerateContext = class {
   #files;
   #previews;
@@ -3907,9 +3409,16 @@ var GenerateContext = class {
         const skip2 = this.settings?.skip?.find((skip3) => {
           return typeof skip3 === "object" && Boolean(skip3[generatorConfig.id]);
         });
-        M(generatorConfig.type).with("operation", () => this.#runOperationGenerator(this.oasDocument, generatorConfig, toSkipPaths(skip2, generatorConfig.id), st)).with("model", () => this.#runModelGenerator(this.oasDocument, generatorConfig, toSkipModels(skip2, generatorConfig.id), st)).otherwise((matched) => {
-          throw new Error(`Invalid generator type: '${matched}' on ${generatorConfig.id}`);
-        });
+        switch (generatorConfig.type) {
+          case "operation":
+            this.#runOperationGenerator(this.oasDocument, generatorConfig, toSkipPaths(skip2, generatorConfig.id), st);
+            break;
+          case "model":
+            this.#runModelGenerator(this.oasDocument, generatorConfig, toSkipModels(skip2, generatorConfig.id), st);
+            break;
+          default:
+            throw new Error(`Invalid generator type: '${generatorConfig.type}' on ${generatorConfig.id}`);
+        }
       });
     });
     return {
@@ -4122,9 +3631,9 @@ var GenerateContext = class {
         importNames
       });
       if (module) {
-        importItem.importNames.forEach((n2) => module.add(`${n2}`));
+        importItem.importNames.forEach((n) => module.add(`${n}`));
       } else {
-        currentFile.imports.set(importModule, new Set(importItem.importNames.map((n2) => `${n2}`)));
+        currentFile.imports.set(importModule, new Set(importItem.importNames.map((n) => `${n}`)));
       }
     });
     definitions?.forEach((definition) => {
@@ -4273,13 +3782,21 @@ var GenerateContext = class {
       throw new Error(`File already exists: ${normalisedPath}`);
     }
     const extension = normalisedPath.split(".").pop();
-    const newFile = M(extension).with("json", () => new JsonFile({
-      path: normalisedPath,
-      content: {}
-    })).otherwise(() => new File2({
-      path: normalisedPath,
-      settings: this.settings
-    }));
+    let newFile;
+    switch (extension) {
+      case "json":
+        newFile = new JsonFile({
+          path: normalisedPath,
+          content: {}
+        });
+        break;
+      default:
+        newFile = new File2({
+          path: normalisedPath,
+          settings: this.settings
+        });
+        break;
+    }
     this.#files.set(normalisedPath, newFile);
     return newFile;
   }
@@ -4396,12 +3913,12 @@ function join3(path, ...paths) {
   return isWindows ? join2(path, ...paths) : join(path, ...paths);
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/toResolvedArtifactPath.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/toResolvedArtifactPath.ts
 var toResolvedArtifactPath = ({ basePath, destinationPath }) => {
   return join3(basePath ?? "./", destinationPath.replace(/^@\//, ""));
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/RenderContext.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/RenderContext.ts
 var RenderContext = class {
   /** Map of generated files to render */
   files;
@@ -4608,7 +4125,7 @@ var renderFile = ({ content, destinationPath, basePath }) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/tag/Tag.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/tag/Tag.ts
 var OasTag = class {
   oasType = "tag";
   #fields;
@@ -4627,14 +4144,14 @@ var OasTag = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/isEmpty.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/isEmpty.ts
 var isEmpty = (value) => {
   return !Object.keys(value).length;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/specificationExtensions/toSpecificationExtensionsV3.ts
-var toSpecificationExtensionsV3 = ({ skipped: s2, parent, parentType, stackTrail, context }) => {
-  const { skipped, extensionFields } = extractExtensions(s2);
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/specificationExtensions/toSpecificationExtensionsV3.ts
+var toSpecificationExtensionsV3 = ({ skipped: s, parent, parentType, stackTrail, context }) => {
+  const { skipped, extensionFields } = extractExtensions(s);
   if (skipped) {
     context.logSkippedFields({
       skipped,
@@ -4662,7 +4179,7 @@ var extractExtensions = (item) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/tag/toTagsV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/tag/toTagsV3.ts
 var toTagsV3 = ({ tags, stackTrail, context }) => {
   if (!tags) {
     return void 0;
@@ -4690,7 +4207,7 @@ var toTagV3 = ({ tag, stackTrail, context }) => {
   return new OasTag(fields);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/refFns.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/refFns.ts
 var toRefName = ($ref) => {
   const refName = $ref.split("/").slice(-1)[0];
   if (!refName) {
@@ -4717,8 +4234,30 @@ var toGetRef = (oasDocument) => ({ $ref }) => {
   throw new Error(`Invalid reference: ${$ref}`);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/ref/Ref.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/ref/Ref.ts
 var MAX_LOOKUPS = 10;
+function refTypeToPluralPath(refType) {
+  switch (refType) {
+    case "schema":
+      return "schemas";
+    case "requestBody":
+      return "requestBodies";
+    case "parameter":
+      return "parameters";
+    case "response":
+      return "responses";
+    case "example":
+      return "examples";
+    case "header":
+      return "headers";
+    case "securityScheme":
+      return "securitySchemes";
+    default: {
+      const _exhaustive = refType;
+      throw new Error(`Unhandled ref type: ${_exhaustive}`);
+    }
+  }
+}
 var OasRef = class {
   /** OAS type identifier */
   oasType = "ref";
@@ -4767,10 +4306,37 @@ var OasRef = class {
    * @returns Either the resolved component or another reference in the chain
    */
   resolveOnce() {
-    const c2 = this.oasDocument.components;
+    const c = this.oasDocument.components;
     const refName = toRefName(this.$ref);
     const refType = this.refType;
-    const resolved = M(refType).with("schema", () => c2?.schemas?.[refName]).with("requestBody", () => c2?.requestBodies?.[refName]).with("parameter", () => c2?.parameters?.[refName]).with("response", () => c2?.responses?.[refName]).with("example", () => c2?.examples?.[refName]).with("header", () => c2?.headers?.[refName]).with("securityScheme", () => c2?.securitySchemes?.[refName]).exhaustive();
+    let resolved;
+    switch (refType) {
+      case "schema":
+        resolved = c?.schemas?.[refName];
+        break;
+      case "requestBody":
+        resolved = c?.requestBodies?.[refName];
+        break;
+      case "parameter":
+        resolved = c?.parameters?.[refName];
+        break;
+      case "response":
+        resolved = c?.responses?.[refName];
+        break;
+      case "example":
+        resolved = c?.examples?.[refName];
+        break;
+      case "header":
+        resolved = c?.headers?.[refName];
+        break;
+      case "securityScheme":
+        resolved = c?.securitySchemes?.[refName];
+        break;
+      default: {
+        const _exhaustive = refType;
+        throw new Error(`Unhandled ref type: ${_exhaustive}`);
+      }
+    }
     if (!resolved) {
       throw new Error(`Ref "${this.#fields.$ref}" not found`);
     }
@@ -4805,18 +4371,18 @@ var OasRef = class {
       return resolved;
     }
     const ref = {
-      $ref: `#/components/${M(this.refType).with("schema", () => "schemas").with("requestBody", () => "requestBodies").with("parameter", () => "parameters").with("response", () => "responses").with("example", () => "examples").with("header", () => "headers").with("securityScheme", () => "securitySchemes").exhaustive()}/${this.toRefName()}`
+      $ref: `#/components/${refTypeToPluralPath(this.refType)}/${this.toRefName()}`
     };
     return ref;
   }
   toJSON() {
     return {
-      $ref: `#/components/${M(this.refType).with("schema", () => "schemas").with("requestBody", () => "requestBodies").with("parameter", () => "parameters").with("response", () => "responses").with("example", () => "examples").with("header", () => "headers").with("securityScheme", () => "securitySchemes").exhaustive()}/${this.toRefName()}`
+      $ref: `#/components/${refTypeToPluralPath(this.refType)}/${this.toRefName()}`
     };
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/ref/toRefV31.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/ref/toRefV31.ts
 var toRefV31 = ({ ref, refType, stackTrail, context }) => {
   const { $ref, ...skipped } = ref;
   if (!isEmpty(skipped)) {
@@ -4834,7 +4400,7 @@ var toRefV31 = ({ ref, refType, stackTrail, context }) => {
   }, context.oasDocument);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/array/Array.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/array/Array.ts
 var OasArray = class {
   /**
    * Object is part the 'schema' set which is used
@@ -4969,7 +4535,7 @@ var OasArray = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_helpers/parseNullable.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_helpers/parseNullable.ts
 var parseNullable = ({ value, stackTrail, context }) => {
   if (value.nullable === void 0) {
     return {
@@ -4998,7 +4564,7 @@ var parseNullable = ({ value, stackTrail, context }) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_helpers/parseEnum.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_helpers/parseEnum.ts
 var parseEnum = ({ value, nullable, parent, context, check, toMessage, stackTrail }) => {
   if (Array.isArray(value)) {
     for (const item of value) {
@@ -5023,7 +4589,7 @@ var parseEnum = ({ value, nullable, parent, context, check, toMessage, stackTrai
   return void 0;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/array/array-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/array/array-types.ts
 var oasArrayDataWithoutItems = object({
   type: literal("array"),
   title: optional(string()),
@@ -5038,7 +4604,7 @@ var oasArrayDataWithoutItems = object({
   deprecated: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/array/toArray.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/array/toArray.ts
 var toArray = ({ value, context, stackTrail }) => {
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
@@ -5156,7 +4722,7 @@ var parseDefault = ({ defaultValue, context, parent, nullable, stackTrail }) => 
   return defaultValue;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/object/Object.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/object/Object.ts
 var OasObject = class _OasObject {
   /**
    * Object is part the 'schema' set which is used
@@ -5385,7 +4951,7 @@ var OasObject = class _OasObject {
       title: this.title,
       description: this.description,
       properties,
-      required: this.required?.filter((n2) => n2 !== name),
+      required: this.required?.filter((n) => n !== name),
       additionalProperties: this.additionalProperties,
       nullable: this.nullable,
       extensionFields: this.extensionFields
@@ -5452,7 +5018,15 @@ var OasObject = class _OasObject {
       maxProperties: this.maxProperties,
       minProperties: this.minProperties,
       enum: this.enums,
-      additionalProperties: M(this.additionalProperties).with(z.nullish, () => false).with(z.boolean, (value) => value).otherwise((value) => value.toJsonSchema(options)),
+      additionalProperties: (() => {
+        if (this.additionalProperties === null || this.additionalProperties === void 0) {
+          return false;
+        } else if (typeof this.additionalProperties === "boolean") {
+          return this.additionalProperties;
+        } else {
+          return this.additionalProperties.toJsonSchema(options);
+        }
+      })(),
       readOnly: this.readOnly,
       writeOnly: this.writeOnly,
       deprecated: this.deprecated
@@ -5460,7 +5034,7 @@ var OasObject = class _OasObject {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/object/toAdditionalPropertiesV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/object/toAdditionalPropertiesV3.ts
 var toAdditionalPropertiesV3 = ({ additionalProperties, stackTrail, context }) => {
   if (typeof additionalProperties === "boolean") {
     return additionalProperties;
@@ -5475,7 +5049,7 @@ var toAdditionalPropertiesV3 = ({ additionalProperties, stackTrail, context }) =
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/object/toObject.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/object/toObject.ts
 var toObject = ({ value, context, stackTrail }) => {
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
@@ -5568,7 +5142,7 @@ var isObject = (value) => {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/integer/Integer.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/integer/Integer.ts
 var OasInteger = class {
   /**
    * Object is part the 'schema' set which is used
@@ -5690,7 +5264,7 @@ var OasInteger = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/integer/integer-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/integer/integer-types.ts
 var integerSchema = pipe(number(), integer());
 var integerFormat = union([
   literal("int32"),
@@ -5715,7 +5289,7 @@ var oasIntegerData = object({
   deprecated: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/integer/toInteger.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/integer/toInteger.ts
 var toInteger = ({ value, stackTrail, context }) => {
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
@@ -5828,7 +5402,7 @@ var isInteger = (value) => {
   return Number.isInteger(value);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/number/Number.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/number/Number.ts
 var OasNumber = class {
   /**
    * Object is part the 'schema' set which is used
@@ -5949,7 +5523,7 @@ var OasNumber = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/number/number-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/number/number-types.ts
 var numberFormat = union([
   literal("float"),
   literal("double")
@@ -5973,7 +5547,7 @@ var oasNumberData = object({
   deprecated: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/number/toNumber.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/number/toNumber.ts
 var toNumber = ({ context, value, stackTrail }) => {
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
@@ -6086,7 +5660,7 @@ var isNumber = (value) => {
   return typeof value === "number";
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/boolean/Boolean.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/boolean/Boolean.ts
 var OasBoolean = class {
   /**
    * Object is part the 'schema' set which is used
@@ -6193,7 +5767,7 @@ var OasBoolean = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/boolean/boolean-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/boolean/boolean-types.ts
 var oasBooleanData = object({
   type: literal("boolean"),
   title: optional(string()),
@@ -6205,7 +5779,7 @@ var oasBooleanData = object({
   deprecated: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/boolean/toBoolean.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/boolean/toBoolean.ts
 var toBoolean = ({ value, stackTrail, context }) => {
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
@@ -6317,7 +5891,7 @@ var isBoolean = (value) => {
   return typeof value === "boolean";
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/string/String.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/string/String.ts
 var OasString = class {
   /**
    * Object is part the 'schema' set which is used
@@ -6425,7 +5999,7 @@ var OasString = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/string/string-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/string/string-types.ts
 var stringFormat = enum_({
   "date-time": "date-time",
   time: "time",
@@ -6460,8 +6034,11 @@ var oasStringData = object({
   deprecated: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/string/toString.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/string/toString.ts
 var toString = ({ context, value, stackTrail }) => {
+  if (value.type === "string" && Object.keys(value).length === 1) {
+    return new OasString();
+  }
   const { nullable, value: valueWithoutNullable } = parseNullable({
     value,
     context,
@@ -6586,7 +6163,7 @@ var parseDefault3 = ({ defaultValue, context, parent, nullable, stackTrail }) =>
   return defaultValue;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/unknown/Unknown.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/unknown/Unknown.ts
 var OasUnknown = class {
   /**
    * Object is part the 'schema' set which is used
@@ -6636,7 +6213,7 @@ var OasUnknown = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/unknown/toUnknown.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/unknown/toUnknown.ts
 var toUnknown = ({ value, stackTrail, context }) => {
   const { type: _type, title, description, example, nullable, ...skipped } = value;
   const extensionFields = toSpecificationExtensionsV3({
@@ -6655,7 +6232,7 @@ var toUnknown = ({ value, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/union/Union.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/union/Union.ts
 var OasUnion = class {
   /**
    * Object is part the 'schema' set which is used
@@ -6727,7 +6304,7 @@ var OasUnion = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/discriminator/Discriminator.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/discriminator/Discriminator.ts
 var OasDiscriminator = class {
   oasType = "discriminator";
   propertyName;
@@ -6738,7 +6315,7 @@ var OasDiscriminator = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/discriminator/toDiscriminatorV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/discriminator/toDiscriminatorV3.ts
 var toDiscriminatorV3 = ({ discriminator, stackTrail, context }) => {
   if (!discriminator) {
     return void 0;
@@ -6758,7 +6335,7 @@ var toDiscriminatorV3 = ({ discriminator, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/union/toUnion.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/union/toUnion.ts
 var toUnion = ({ value, members, parentType, stackTrail, context }) => {
   const { discriminator, title, description, nullable, example, default: defaultValue, ...skipped } = value;
   const extensionFields = toSpecificationExtensionsV3({
@@ -6796,7 +6373,7 @@ var toUnion = ({ value, members, parentType, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/decompose-intersection.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/decompose-intersection.ts
 var decomposeIntersection = ({ schema }) => {
   if (!schema.allOf) {
     return [
@@ -6827,28 +6404,28 @@ var decomposeIntersection = ({ schema }) => {
   ].filter((item) => item !== void 0);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-type-conflicts.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-type-conflicts.ts
 var checkTypeConflicts = (first, second) => {
   if (first.type && second.type && first.type !== second.type) {
     throw new Error(`Cannot merge schemas: conflicting types '${first.type}' and '${second.type}', ${JSON.stringify(first)} and ${JSON.stringify(second)}`);
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-read-only-write-only-conflicts.ts
-var checkReadOnlyWriteOnlyConflicts = (a2, b2) => {
-  if (a2.readOnly && b2.writeOnly || a2.writeOnly && b2.readOnly) {
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-read-only-write-only-conflicts.ts
+var checkReadOnlyWriteOnlyConflicts = (a, b) => {
+  if (a.readOnly && b.writeOnly || a.writeOnly && b.readOnly) {
     throw new Error("Cannot merge schemas: property cannot be both readOnly and writeOnly");
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-format-conflicts.ts
-var checkFormatConflicts = (a2, b2) => {
-  if (a2.format && b2.format && a2.format !== b2.format) {
-    throw new Error(`Cannot merge schemas: conflicting formats '${a2.format}' and '${b2.format}'`);
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-format-conflicts.ts
+var checkFormatConflicts = (a, b) => {
+  if (a.format && b.format && a.format !== b.format) {
+    throw new Error(`Cannot merge schemas: conflicting formats '${a.format}' and '${b.format}'`);
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/is-equal.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/is-equal.ts
 var isEqual = (first, second) => {
   if (Array.isArray(first) && Array.isArray(second)) {
     if (first.length !== second.length) return false;
@@ -6863,7 +6440,7 @@ var isEqual = (first, second) => {
   return first === second;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-enum-conflicts.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-enum-conflicts.ts
 var checkEnumConflicts = (first, second) => {
   if (first.enum && second.enum) {
     const intersection = first.enum.filter((value) => {
@@ -6875,31 +6452,31 @@ var checkEnumConflicts = (first, second) => {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-number-constraints-conflicts.ts
-var checkNumberConstraintsConflicts = (a2, b2) => {
-  if (a2.type === "number" && b2.type === "number") {
-    const aMin = a2.minimum ?? -Infinity;
-    const aMax = a2.maximum ?? Infinity;
-    const bMin = b2.minimum ?? -Infinity;
-    const bMax = b2.maximum ?? Infinity;
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-number-constraints-conflicts.ts
+var checkNumberConstraintsConflicts = (a, b) => {
+  if (a.type === "number" && b.type === "number") {
+    const aMin = a.minimum ?? -Infinity;
+    const aMax = a.maximum ?? Infinity;
+    const bMin = b.minimum ?? -Infinity;
+    const bMax = b.maximum ?? Infinity;
     if (aMin > bMax || bMin > aMax) {
       throw new Error(`Cannot merge schemas: incompatible number ranges [${aMin},${aMax}] and [${bMin},${bMax}]`);
     }
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-array-item-type-conflicts.ts
-var checkArrayItemTypeConflicts = (a2, b2) => {
-  if (a2.type === "array" && b2.type === "array" && "items" in a2 && "items" in b2) {
-    const aItems = a2.items;
-    const bItems = b2.items;
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-array-item-type-conflicts.ts
+var checkArrayItemTypeConflicts = (a, b) => {
+  if (a.type === "array" && b.type === "array" && "items" in a && "items" in b) {
+    const aItems = a.items;
+    const bItems = b.items;
     if (aItems.type && bItems.type && aItems.type !== bItems.type) {
       throw new Error(`Cannot merge schemas: array items have conflicting types '${aItems.type}' and '${bItems.type}'`);
     }
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-enum-values.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-enum-values.ts
 var containsEnum = (schema) => {
   return Array.isArray(schema.enum);
 };
@@ -6926,7 +6503,7 @@ function mergeEnumValues(first, second, typeCheck) {
   };
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-properties.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-properties.ts
 var mergeProperties = (first, second, getRef) => {
   if (containsProperties(first, second)) {
     const properties = {
@@ -6953,7 +6530,7 @@ var containsProperties = (first, second) => {
   return Boolean(first.properties || second.properties);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-required.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-required.ts
 var containsRequired = (first, second) => {
   return Boolean(first.required || second.required);
 };
@@ -6968,7 +6545,7 @@ var mergeRequired = (first, second) => {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/generic-merge.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/generic-merge.ts
 var genericMerge = (first, second, getRef, typeCheck) => {
   return {
     ...first,
@@ -6979,7 +6556,7 @@ var genericMerge = (first, second, getRef, typeCheck) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-object-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-object-constraints.ts
 var mergeObjectConstraints = (first, second, getRef) => {
   checkTypeConflicts(first, second);
   const result = genericMerge(first, second, getRef, record(string(), any()));
@@ -6999,7 +6576,7 @@ var mergeObjectConstraints = (first, second, getRef) => {
   return result;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-array-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-array-constraints.ts
 function mergeArrayConstraints(first, second, getRef) {
   checkTypeConflicts(first, second);
   if (!("items" in first) && !("items" in second)) {
@@ -7038,12 +6615,12 @@ var mergeItems = (first, second, getRef) => {
   throw new Error("Cannot merge array constraints: no items found");
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/check-at-least-one-type-match.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/check-at-least-one-type-match.ts
 var checkAtLeastOneTypeMatch = (first, second, type) => {
   return first.type === type && second.type === type || first.type === type && !second.type || !first.type && second.type === type;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-string-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-string-constraints.ts
 function mergeStringConstraints(first, second, getRef) {
   checkTypeConflicts(first, second);
   if (!checkAtLeastOneTypeMatch(first, second, "string")) {
@@ -7084,7 +6661,7 @@ function mergeStringConstraints(first, second, getRef) {
   return result;
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-number-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-number-constraints.ts
 function mergeNumberConstraints(first, second, getRef) {
   checkTypeConflicts(first, second);
   const result = genericMerge(first, second, getRef, number());
@@ -7115,7 +6692,7 @@ function mergeNumberConstraints(first, second, getRef) {
   return result;
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-integer-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-integer-constraints.ts
 function mergeIntegerConstraints(first, second, getRef) {
   checkTypeConflicts(first, second);
   const result = genericMerge(first, second, getRef, number());
@@ -7146,13 +6723,13 @@ function mergeIntegerConstraints(first, second, getRef) {
   return result;
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-boolean-constraints.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-boolean-constraints.ts
 function mergeBooleanConstraints(first, second, getRef) {
   checkTypeConflicts(first, second);
   return genericMerge(first, second, getRef, boolean());
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/decompose-union.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/decompose-union.ts
 var decomposeUnion = ({ schema, groupType }) => {
   if (!schema[groupType]) {
     console.log("NO GROUP TYPE", JSON.stringify(schema, null, 2));
@@ -7223,18 +6800,18 @@ var exclude = (entries) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/cross-product.ts
-var crossProduct = (a2, b2) => {
-  return a2.reduce((acc, x2) => [
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/cross-product.ts
+var crossProduct = (a, b) => {
+  return a.reduce((acc, x) => [
     ...acc,
-    ...b2.map((y2) => [
-      x2,
-      y2
+    ...b.map((y) => [
+      x,
+      y
     ])
   ], []);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-union.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-union.ts
 var mergeUnion = ({ schema, getRef, groupType }) => {
   const { beforeExcluded, decomposed, afterExcluded } = decomposeUnion({
     schema,
@@ -7286,7 +6863,7 @@ var mergeCrossProduct = ({ first, second, getRef, groupType }) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/nullable-merge.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/nullable-merge.ts
 var mergeNullOnly = (schema) => {
   if (schema.enum && !schema.enum.includes(null)) {
     schema.enum.push(null);
@@ -7299,7 +6876,7 @@ var isNullOnly = (schema) => {
   return Boolean(nullable) && enumValues?.length === 1 && enumValues[0] === null && isEmpty(rest ?? {});
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge.ts
 var mergeSchemasOrRefs = (first, second, getRef) => {
   if (containsRef(first, second)) {
     return mergeWithRef(first, second, getRef);
@@ -7390,8 +6967,8 @@ var containsRef = (first, second) => {
 var mergeSchemas = (first, second, getRef) => {
   try {
     checkTypeConflicts(first, second);
-  } catch (e2) {
-    throw e2;
+  } catch (e) {
+    throw e;
   }
   checkReadOnlyWriteOnlyConflicts(first, second);
   checkFormatConflicts(first, second);
@@ -7449,7 +7026,7 @@ var mergeWithRef = (first, second, getRef) => {
   throw new Error("Invalid input");
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/_merge-all-of/merge-intersection.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/_merge-all-of/merge-intersection.ts
 var mergeIntersection = ({ schema, getRef }) => {
   const decomposed = decomposeIntersection({
     schema
@@ -7467,7 +7044,7 @@ var mergeIntersection = ({ schema, getRef }) => {
   return result;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/schema/toSchemasV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/schema/toSchemasV3.ts
 var toSchemasV3 = ({ schemas, stackTrail, context }) => {
   const output = {};
   const entries = Object.entries(schemas);
@@ -7511,12 +7088,10 @@ var toSchemaV3 = ({ schema, stackTrail, context }) => {
       context
     });
   }
-  return M(schema).with({
-    allOf: z.array()
-  }, (schema2) => {
+  if ("allOf" in schema && Array.isArray(schema.allOf)) {
     return stackTrail.trace("allOf", (st) => {
       const merged = mergeIntersection({
-        schema: schema2,
+        schema,
         getRef: toGetRef(context.documentObject)
       });
       return toSchemaV3({
@@ -7525,12 +7100,11 @@ var toSchemaV3 = ({ schema, stackTrail, context }) => {
         context
       });
     });
-  }).with({
-    oneOf: z.array()
-  }, (oneOf) => {
+  }
+  if ("oneOf" in schema && Array.isArray(schema.oneOf)) {
     return stackTrail.trace("oneOf", (st) => {
       const merged = mergeUnion({
-        schema: oneOf,
+        schema,
         getRef: toGetRef(context.documentObject),
         groupType: "oneOf"
       });
@@ -7556,12 +7130,11 @@ var toSchemaV3 = ({ schema, stackTrail, context }) => {
         context
       });
     });
-  }).with({
-    anyOf: z.array()
-  }, (matched) => {
+  }
+  if ("anyOf" in schema && Array.isArray(schema.anyOf)) {
     return stackTrail.trace("anyOf", (st) => {
-      if (matched["x-expansionResources"]) {
-        const { anyOf, ...value2 } = matched;
+      if (schema["x-expansionResources"] && Array.isArray(schema.anyOf)) {
+        const { anyOf, ...value2 } = schema;
         return toUnion({
           value: value2,
           members: anyOf,
@@ -7571,7 +7144,7 @@ var toSchemaV3 = ({ schema, stackTrail, context }) => {
         });
       }
       const merged = mergeUnion({
-        schema: matched,
+        schema,
         getRef: toGetRef(context.documentObject),
         groupType: "anyOf"
       });
@@ -7597,116 +7170,119 @@ var toSchemaV3 = ({ schema, stackTrail, context }) => {
         context
       });
     });
-  }).with({
-    type: "object"
-  }, (value) => toObject({
-    value,
-    stackTrail,
-    context
-  })).with({
-    type: "array"
-  }, (value) => toArray({
-    value,
-    stackTrail,
-    context
-  })).with({
-    type: "integer"
-  }, (value) => toInteger({
-    value,
-    stackTrail,
-    context
-  })).with({
-    type: "number"
-  }, (value) => toNumber({
-    value,
-    stackTrail,
-    context
-  })).with({
-    type: "boolean"
-  }, (value) => toBoolean({
-    value,
-    stackTrail,
-    context
-  })).with({
-    type: "string"
-  }, (value) => toString({
-    value,
-    stackTrail,
-    context
-  })).otherwise((value) => {
-    if (possibleObject(value)) {
-      context.logIssueNoKey({
-        level: "warning",
-        message: 'Object has "properties" property, but is missing type="object" property',
-        parent: value,
-        stackTrail,
-        type: "MISSING_OBJECT_TYPE"
-      });
-      return toObject({
-        value: {
-          ...value,
-          type: "object"
-        },
-        stackTrail,
-        context
-      });
+  }
+  if ("type" in schema) {
+    switch (schema.type) {
+      case "object":
+        return toObject({
+          value: schema,
+          stackTrail,
+          context
+        });
+      case "array":
+        return toArray({
+          value: schema,
+          stackTrail,
+          context
+        });
+      case "integer":
+        return toInteger({
+          value: schema,
+          stackTrail,
+          context
+        });
+      case "number":
+        return toNumber({
+          value: schema,
+          stackTrail,
+          context
+        });
+      case "boolean":
+        return toBoolean({
+          value: schema,
+          stackTrail,
+          context
+        });
+      case "string":
+        return toString({
+          value: schema,
+          stackTrail,
+          context
+        });
     }
-    if (possibleArray(value)) {
-      context.logIssueNoKey({
-        level: "warning",
-        message: 'Object has "items" property, but is missing type="array" property',
-        parent: value,
-        stackTrail,
-        type: "MISSING_ARRAY_TYPE"
-      });
-      return toArray({
-        value: {
-          ...value,
-          type: "array"
-        },
-        stackTrail,
-        context
-      });
-    }
-    if (possibleBoolean(value)) {
-      context.logIssueNoKey({
-        level: "warning",
-        message: 'Object has a boolean "default" or "example" property, but is missing type="boolean" property',
-        parent: value,
-        stackTrail,
-        type: "MISSING_BOOLEAN_TYPE"
-      });
-      return toBoolean({
-        value: {
-          ...value,
-          type: "boolean"
-        },
-        stackTrail,
-        context
-      });
-    }
-    if (possibleString(value)) {
-      context.logIssueNoKey({
-        level: "warning",
-        message: 'Object has a string "default" or "example" property, but is missing type="string" property',
-        parent: value,
-        stackTrail,
-        type: "MISSING_STRING_TYPE"
-      });
-      return toString({
-        value: {
-          ...value,
-          type: "string"
-        },
-        stackTrail,
-        context
-      });
-    }
-    return toUnknown({
-      value,
+  }
+  if (possibleObject(schema)) {
+    context.logIssueNoKey({
+      level: "warning",
+      message: 'Object has "properties" property, but is missing type="object" property',
+      parent: schema,
+      stackTrail,
+      type: "MISSING_OBJECT_TYPE"
+    });
+    return toObject({
+      value: {
+        ...schema,
+        type: "object"
+      },
       stackTrail,
       context
     });
+  }
+  if (possibleArray(schema)) {
+    context.logIssueNoKey({
+      level: "warning",
+      message: 'Object has "items" property, but is missing type="array" property',
+      parent: schema,
+      stackTrail,
+      type: "MISSING_ARRAY_TYPE"
+    });
+    return toArray({
+      value: {
+        ...schema,
+        type: "array"
+      },
+      stackTrail,
+      context
+    });
+  }
+  if (possibleBoolean(schema)) {
+    context.logIssueNoKey({
+      level: "warning",
+      message: 'Object has a boolean "default" or "example" property, but is missing type="boolean" property',
+      parent: schema,
+      stackTrail,
+      type: "MISSING_BOOLEAN_TYPE"
+    });
+    return toBoolean({
+      value: {
+        ...schema,
+        type: "boolean"
+      },
+      stackTrail,
+      context
+    });
+  }
+  if (possibleString(schema)) {
+    context.logIssueNoKey({
+      level: "warning",
+      message: 'Object has a string "default" or "example" property, but is missing type="string" property',
+      parent: schema,
+      stackTrail,
+      type: "MISSING_STRING_TYPE"
+    });
+    return toString({
+      value: {
+        ...schema,
+        type: "string"
+      },
+      stackTrail,
+      context
+    });
+  }
+  return toUnknown({
+    value: schema,
+    stackTrail,
+    context
   });
 };
 var possibleString = (value) => {
@@ -7737,7 +7313,7 @@ var toOptionalSchemaV3 = ({ schema, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/example/Example.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/example/Example.ts
 var OasExample = class {
   /** Static identifier property for OasExample */
   oasType = "example";
@@ -7774,7 +7350,7 @@ var OasExample = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/example/toExamplesV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/example/toExamplesV3.ts
 var toExampleSimpleV3 = ({ example }) => {
   const fields = {
     value: example.value,
@@ -7845,7 +7421,7 @@ var toExampleV3 = ({ example, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/mediaType/MediaType.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/mediaType/MediaType.ts
 var OasMediaType = class {
   /** Type identifier for this OAS media type */
   oasType = "mediaType";
@@ -7885,7 +7461,7 @@ var OasMediaType = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/mediaType/toMediaTypeItemV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/mediaType/toMediaTypeItemV3.ts
 var toMediaTypeItemV3 = ({ mediaTypeItem, mediaType, stackTrail, context }) => {
   const { schema, example, examples, encoding, ...skipped } = mediaTypeItem;
   const extensionFields = toSpecificationExtensionsV3({
@@ -7938,7 +7514,7 @@ var toOptionalMediaTypeItemsV3 = ({ content, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/requestBody/RequestBody.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/requestBody/RequestBody.ts
 var OasRequestBody = class {
   oasType = "requestBody";
   description;
@@ -7975,7 +7551,7 @@ var OasRequestBody = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/requestBody/toRequestBodiesV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/requestBody/toRequestBodiesV3.ts
 var toRequestBodyV3 = ({ requestBody, stackTrail, context }) => {
   if (!requestBody) {
     return void 0;
@@ -8027,7 +7603,7 @@ var toRequestBodiesV3 = ({ requestBodies, stackTrail, context }) => {
   return Object.fromEntries(entries);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/header/Header.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/header/Header.ts
 var OasHeader = class {
   oasType = "header";
   /** Brief description of header */
@@ -8090,7 +7666,7 @@ var OasHeader = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/header/toHeadersV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/header/toHeadersV3.ts
 var toHeadersV3 = ({ headers, stackTrail, context }) => {
   if (!headers) {
     return void 0;
@@ -8149,7 +7725,7 @@ var toHeaderV3 = ({ header, stackTrail, context }) => {
   return new OasHeader(fields);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/response/Response.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/response/Response.ts
 var OasResponse = class {
   oasType = "response";
   description;
@@ -8189,7 +7765,7 @@ var OasResponse = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/response/toResponseV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/response/toResponseV3.ts
 var toResponsesV3 = ({ responses, stackTrail, context }) => {
   const output = {};
   const entries = Object.entries(responses);
@@ -8257,7 +7833,7 @@ var toResponseV3 = ({ response, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/parameter/parameter-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/parameter/parameter-types.ts
 var oasParameterLocation = enum_({
   query: "query",
   header: "header",
@@ -8274,7 +7850,7 @@ var oasParameterStyle = enum_({
   deepObject: "deepObject"
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/parameter/Parameter.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/parameter/Parameter.ts
 var OasParameter = class {
   /** Type identifier for OAS parameter objects */
   oasType = "parameter";
@@ -8395,7 +7971,7 @@ var OasParameter = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/parameter/toParameterV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/parameter/toParameterV3.ts
 var toParameterListV3 = ({ parameters, stackTrail, context }) => {
   if (!parameters) {
     return void 0;
@@ -8505,13 +8081,35 @@ var toParameterV3 = ({ parameter, stackTrail, context }) => {
 };
 var toStyle = ({ style, location, stackTrail }) => {
   const parsed = parse(optional(oasParameterStyle), style);
-  return parsed ?? M(location).with("path", () => "simple").with("header", () => "simple").with("query", () => "form").with("cookie", () => "form").exhaustive();
+  if (parsed !== void 0) {
+    return parsed;
+  }
+  switch (location) {
+    case "path":
+    case "header":
+      return "simple";
+    case "query":
+    case "cookie":
+      return "form";
+    default: {
+      const _exhaustive = location;
+      throw new Error(`Unhandled location: ${_exhaustive}`);
+    }
+  }
 };
 var toExplode = ({ explode, style, stackTrail }) => {
-  return explode ?? M(style).with("form", () => true).otherwise(() => false);
+  if (explode !== void 0) {
+    return explode;
+  }
+  switch (style) {
+    case "form":
+      return true;
+    default:
+      return false;
+  }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/operation/Operation.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/operation/Operation.ts
 var OasOperation = class {
   /** Type identifier for OAS operation objects */
   oasType = "operation";
@@ -8586,7 +8184,7 @@ var OasOperation = class {
    * @returns Success status code as string or undefined if none found
    */
   toSuccessResponseCode() {
-    const successCode = Object.keys(this.responses).map((httpCode) => parseInt(httpCode)).sort((a2, b2) => a2 - b2).find((httpCode) => httpCode >= 200 && httpCode < 300);
+    const successCode = Object.keys(this.responses).map((httpCode) => parseInt(httpCode)).sort((a, b) => a - b).find((httpCode) => httpCode >= 200 && httpCode < 300);
     if (successCode) {
       return successCode.toString();
     }
@@ -8679,7 +8277,7 @@ var OasOperation = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/pathItem/PathItem.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/pathItem/PathItem.ts
 var OasPathItem = class {
   oasType = "pathItem";
   summary;
@@ -8694,7 +8292,7 @@ var OasPathItem = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/pathItem/toPathItemV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/pathItem/toPathItemV3.ts
 var toPathItemV3 = ({ pathItem, stackTrail, context }) => {
   const { summary, description, parameters, ...skipped } = pathItem;
   return new OasPathItem({
@@ -8715,7 +8313,7 @@ var toPathItemV3 = ({ pathItem, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/securityRequirement/SecurityRequirement.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/securityRequirement/SecurityRequirement.ts
 var OasSecurityRequirement = class {
   oasType = "securityRequirement";
   requirement;
@@ -8734,7 +8332,7 @@ var OasSecurityRequirement = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/securityRequirement/toSecurityRequirement.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/securityRequirement/toSecurityRequirement.ts
 var toSecurityRequirementsV3 = ({ security, stackTrail, context }) => {
   if (!security) {
     return void 0;
@@ -8746,7 +8344,7 @@ var toSecurityRequirementsV3 = ({ security, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/externalDocs/ExternalDocs.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/externalDocs/ExternalDocs.ts
 var OasExternalDocs = class {
   url;
   description;
@@ -8756,16 +8354,16 @@ var OasExternalDocs = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/markdown/markdown-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/markdown/markdown-types.ts
 var markdown = string();
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/externalDocs/externalDocsTypes.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/externalDocs/externalDocsTypes.ts
 var oasExternalDocsData = object({
   description: optional(markdown),
   url: string()
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/externalDocs/toExternalDocs.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/externalDocs/toExternalDocs.ts
 var toExternalDocs = ({ externalDocs, stackTrail }) => {
   if (!externalDocs) {
     return void 0;
@@ -8779,7 +8377,7 @@ var toExternalDocs = ({ externalDocs, stackTrail }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/server/Server.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/server/Server.ts
 var OasServer = class {
   /** Type identifier for this OAS server */
   oasType = "server";
@@ -8841,7 +8439,7 @@ var OasServer = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/serverVariable/ServerVariable.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/serverVariable/ServerVariable.ts
 var OasServerVariable = class {
   /** Type identifier for OAS server variable objects */
   oasType = "serverVariable";
@@ -8877,7 +8475,7 @@ var OasServerVariable = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/serverVariable/toServerVariableV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/serverVariable/toServerVariableV3.ts
 var toServerVariablesV3 = ({ serverVariables, stackTrail, context }) => {
   return Object.fromEntries(Object.entries(serverVariables).map(([key, serverVariable]) => [
     key,
@@ -8915,7 +8513,7 @@ var toServerVariableV3 = ({ serverVariable, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/server/toServerV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/server/toServerV3.ts
 var toServersV3 = ({ servers, stackTrail, context }) => {
   return servers.map((server, index) => {
     return stackTrail.trace(server.url ?? index, (st) => toServerV3({
@@ -8956,7 +8554,7 @@ var toServerV3 = ({ server, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/operation/toOperationsV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/operation/toOperationsV3.ts
 var toOperationV3 = ({ operation, operationInfo, stackTrail, context }) => {
   const { method: method2, path, pathItem } = operationInfo;
   const { operationId, tags, summary, description, parameters, requestBody, responses, deprecated, security, externalDocs, servers, ...skipped } = operation;
@@ -9074,7 +8672,7 @@ var toOperationsV3 = ({ paths, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/components/Components.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/components/Components.ts
 var componentsKeys = [
   "schemas",
   "responses",
@@ -9217,7 +8815,7 @@ var OasComponents = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/securitySchemes/SecurityScheme.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/securitySchemes/SecurityScheme.ts
 var OasHttpSecurityScheme = class {
   oasType = "securityScheme";
   type = "http";
@@ -9333,7 +8931,7 @@ var OasOpenIdSecurityScheme = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/securitySchemes/security-scheme-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/securitySchemes/security-scheme-types.ts
 var oasHttpSecuritySchemeData = object({
   type: literal("http"),
   description: optional(string()),
@@ -9394,7 +8992,7 @@ var oasSecuritySchemeData = union([
   oasOpenIdSecuritySchemeData
 ]);
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/securitySchemes/toSecuritySchemes.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/securitySchemes/toSecuritySchemes.ts
 var toSecuritySchemesV3 = ({ securitySchemes, stackTrail, context }) => {
   if (!securitySchemes) {
     return void 0;
@@ -9419,78 +9017,75 @@ var toSecuritySchemeV3 = ({ securityScheme, stackTrail, context }) => {
       context
     });
   }
-  return M(securityScheme).with({
-    type: "http"
-  }, (matched) => {
-    const { type: _type, description, scheme, bearerFormat, ...skipped } = parse(oasHttpSecuritySchemeData, matched);
-    if (!isEmpty(skipped)) {
-      context.logSkippedFields({
-        skipped,
-        parent: matched,
-        stackTrail,
-        parentType: "securityScheme:http"
+  switch (securityScheme.type) {
+    case "http": {
+      const { type: _type, description, scheme, bearerFormat, ...skipped } = parse(oasHttpSecuritySchemeData, securityScheme);
+      if (!isEmpty(skipped)) {
+        context.logSkippedFields({
+          skipped,
+          parent: securityScheme,
+          stackTrail,
+          parentType: "securityScheme:http"
+        });
+      }
+      return new OasHttpSecurityScheme({
+        description,
+        scheme,
+        bearerFormat
       });
     }
-    return new OasHttpSecurityScheme({
-      description,
-      scheme,
-      bearerFormat
-    });
-  }).with({
-    type: "apiKey"
-  }, (matched) => {
-    const { type: _type, in: location, description, name, ...skipped } = parse(oasApiKeySecuritySchemeData, matched);
-    if (!isEmpty(skipped)) {
-      context.logSkippedFields({
-        skipped,
-        parent: matched,
-        stackTrail,
-        parentType: "securityScheme:apiKey"
+    case "apiKey": {
+      const { type: _type, in: location, description, name, ...skipped } = parse(oasApiKeySecuritySchemeData, securityScheme);
+      if (!isEmpty(skipped)) {
+        context.logSkippedFields({
+          skipped,
+          parent: securityScheme,
+          stackTrail,
+          parentType: "securityScheme:apiKey"
+        });
+      }
+      return new OasApiKeySecurityScheme({
+        description,
+        name,
+        in: location
       });
     }
-    return new OasApiKeySecurityScheme({
-      description,
-      name,
-      in: location
-    });
-  }).with({
-    type: "oauth2"
-  }, (matched) => {
-    const { type: _type, flows, description, ...skipped } = parse(oasOAuth2SecuritySchemeData, matched);
-    if (!isEmpty(skipped)) {
-      context.logSkippedFields({
-        skipped,
-        parent: matched,
-        stackTrail,
-        parentType: "securityScheme:oauth2"
+    case "oauth2": {
+      const { type: _type, flows, description, ...skipped } = parse(oasOAuth2SecuritySchemeData, securityScheme);
+      if (!isEmpty(skipped)) {
+        context.logSkippedFields({
+          skipped,
+          parent: securityScheme,
+          stackTrail,
+          parentType: "securityScheme:oauth2"
+        });
+      }
+      return new OasOAuth2SecurityScheme({
+        description,
+        flows
       });
     }
-    return new OasOAuth2SecurityScheme({
-      description,
-      flows
-    });
-  }).with({
-    type: "openIdConnect"
-  }, (matched) => {
-    const { type: _type, description, openIdConnectUrl, ...skipped } = parse(oasOpenIdSecuritySchemeData, matched);
-    if (!isEmpty(skipped)) {
-      context.logSkippedFields({
-        skipped,
-        parent: matched,
-        stackTrail,
-        parentType: "securityScheme:openIdConnect"
+    case "openIdConnect": {
+      const { type: _type, description, openIdConnectUrl, ...skipped } = parse(oasOpenIdSecuritySchemeData, securityScheme);
+      if (!isEmpty(skipped)) {
+        context.logSkippedFields({
+          skipped,
+          parent: securityScheme,
+          stackTrail,
+          parentType: "securityScheme:openIdConnect"
+        });
+      }
+      return new OasOpenIdSecurityScheme({
+        description,
+        openIdConnectUrl
       });
     }
-    return new OasOpenIdSecurityScheme({
-      description,
-      openIdConnectUrl
-    });
-  }).otherwise((other) => {
-    throw new Error(`Unknown security scheme type: ${other}`);
-  });
+    default:
+      throw new Error(`Unknown security scheme type: ${securityScheme.type}`);
+  }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/components/toComponentsV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/components/toComponentsV3.ts
 var toComponentsV3 = ({ components, stackTrail, context }) => {
   if (!components) {
     return void 0;
@@ -9546,7 +9141,7 @@ var toComponentsV3 = ({ components, stackTrail, context }) => {
   return new OasComponents(fields);
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/info/Info.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/info/Info.ts
 var OasInfo = class {
   /** Type identifier for this OAS info object */
   oasType = "info";
@@ -9614,7 +9209,7 @@ var OasInfo = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/contact/Contact.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/contact/Contact.ts
 var OasContact = class {
   /** Type identifier for this OAS contact object */
   oasType = "contact";
@@ -9639,7 +9234,7 @@ var OasContact = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/contact/toContactV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/contact/toContactV3.ts
 var toContactV3 = (contact, stackTrail, context) => {
   const { name, url, email, ...skipped } = contact;
   const extensionFields = toSpecificationExtensionsV3({
@@ -9657,7 +9252,7 @@ var toContactV3 = (contact, stackTrail, context) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/license/License.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/license/License.ts
 var OasLicense = class {
   oasType = "license";
   name;
@@ -9670,7 +9265,7 @@ var OasLicense = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/license/toLicenseV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/license/toLicenseV3.ts
 var toLicenseV3 = (license, stackTrail, context) => {
   const { name, url, ...skipped } = license;
   const extensionFields = toSpecificationExtensionsV3({
@@ -9687,7 +9282,7 @@ var toLicenseV3 = (license, stackTrail, context) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/info/toInfoV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/info/toInfoV3.ts
 var toInfoV3 = ({ info, stackTrail, context }) => {
   const { title, description, termsOfService, contact, license, version, ...skipped } = info;
   const extensionFields = toSpecificationExtensionsV3({
@@ -9708,7 +9303,7 @@ var toInfoV3 = ({ info, stackTrail, context }) => {
   });
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/document/toDocumentFieldsV3.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/document/toDocumentFieldsV3.ts
 var toDocumentFieldsV3 = ({ documentObject, stackTrail, context }) => {
   const { openapi, info, paths, components, tags, servers, security, externalDocs, ...skipped } = documentObject;
   const extensionFields = toSpecificationExtensionsV3({
@@ -9759,7 +9354,7 @@ var toDocumentFieldsV3 = ({ documentObject, stackTrail, context }) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/document/Document.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/document/Document.ts
 var OasDocument = class {
   /** Static identifier property for OasDocument */
   oasType = "openapi";
@@ -9809,21 +9404,24 @@ var OasDocument = class {
    */
   removeItem(stackTrail) {
     const [first, second, third] = stackTrail.stackTrail;
-    return M(first).with("paths", () => {
-      const index = this.#fields.operations.findIndex(({ path, method: method2 }) => path === second && method2 === third);
-      if (index === -1) {
-        return void 0;
+    switch (first) {
+      case "paths": {
+        const index = this.#fields.operations.findIndex(({ path, method: method2 }) => path === second && method2 === third);
+        if (index === -1) {
+          return void 0;
+        }
+        const [removed] = this.#fields.operations.splice(index, 1);
+        return removed;
       }
-      const [removed] = this.#fields.operations.splice(index, 1);
-      return removed;
-    }).with("components", () => {
-      if (typeof third !== "string") {
-        throw new Error(`RefName cannot be a number: ${third}`);
+      case "components": {
+        if (typeof third !== "string") {
+          throw new Error(`RefName cannot be a number: ${third}`);
+        }
+        return this.#fields.components.removeSchema(third);
       }
-      return this.#fields.components.removeSchema(third);
-    }).otherwise(() => {
-      throw new Error(`Unexpected stack trail: ${stackTrail}`);
-    });
+      default:
+        throw new Error(`Unexpected stack trail: ${stackTrail}`);
+    }
   }
   /**
    * Sets the document fields after parsing.
@@ -9945,7 +9543,7 @@ var OasDocument = class {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/ParseContext.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/ParseContext.ts
 var ParseContext = class {
   /** The original OpenAPI v3 document being parsed */
   documentObject;
@@ -10937,7 +10535,7 @@ function asString(data, isProperty = false) {
   } else if (data instanceof Error) {
     return data.stack;
   } else if (typeof data === "object") {
-    return `{${Object.entries(data).map(([k2, v2]) => `"${k2}":${asString(v2, true)}`).join(",")}}`;
+    return `{${Object.entries(data).map(([k, v]) => `"${k}":${asString(v, true)}`).join(",")}}`;
   }
   return "undefined";
 }
@@ -11012,7 +10610,7 @@ var Logger = class {
   set level(level) {
     try {
       this.#level = getLevelByName(getLevelName(level));
-    } catch (_2) {
+    } catch (_) {
       throw new TypeError(`Invalid log level: ${level}`);
     }
   }
@@ -11145,11 +10743,11 @@ var state = {
 // deno:https://jsr.io/@std/log/0.224.14/get_logger.ts
 function getLogger(name) {
   if (!name) {
-    const d2 = state.loggers.get("default");
-    if (d2 === void 0) {
+    const d = state.loggers.get("default");
+    if (d === void 0) {
       throw new Error(`"default" logger must be set for getting logger without name`);
     }
-    return d2;
+    return d;
   }
   const result = state.loggers.get(name);
   if (!result) {
@@ -11203,7 +10801,7 @@ function setup(config) {
 }
 setup(DEFAULT_CONFIG);
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/StackTrail.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/StackTrail.ts
 var StackTrail = class _StackTrail {
   /** Internal stack of traversal frames */
   #stack;
@@ -11273,7 +10871,7 @@ var StackTrail = class _StackTrail {
       return this;
     }
     if (Array.isArray(frame)) {
-      frame.forEach((p2) => this.append(p2));
+      frame.forEach((p) => this.append(p));
       return this;
     }
     throw new Error(`Unexpected stack frame: ${frame}`);
@@ -11369,7 +10967,7 @@ var StackTrail = class _StackTrail {
       return this;
     }
     if (Array.isArray(frame)) {
-      frame.toReversed().forEach((p2) => this.remove(p2));
+      frame.toReversed().forEach((p) => this.remove(p));
       return this;
     }
     throw new Error(`Unexpected stack frame: ${frame}`);
@@ -11417,7 +11015,7 @@ var StackTrail = class _StackTrail {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/ResultsHandler.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/ResultsHandler.ts
 var ResultsHandler = class extends BaseHandler {
   /** The CoreContext instance for capturing results */
   context;
@@ -11490,9 +11088,18 @@ var ResultsHandler = class extends BaseHandler {
    * ```
    */
   log(levelName) {
-    this.context.captureCurrentResult(M(levelName).with("WARN", () => "warning").with("ERROR", () => "error").otherwise(() => {
-      throw new Error(`Unexpected log level name: ${levelName}`);
-    }), new StackTrail([
+    let resultType2;
+    switch (levelName) {
+      case "WARN":
+        resultType2 = "warning";
+        break;
+      case "ERROR":
+        resultType2 = "error";
+        break;
+      default:
+        throw new Error(`Unexpected log level name: ${levelName}`);
+    }
+    this.context.captureCurrentResult(resultType2, new StackTrail([
       "SKIPPED"
     ]));
   }
@@ -11542,20 +11149,20 @@ var ResultsHandler = class extends BaseHandler {
   }
 };
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_freeGlobal.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_freeGlobal.js
 var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
 var freeGlobal_default = freeGlobal;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_root.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_root.js
 var freeSelf = typeof self == "object" && self && self.Object === Object && self;
 var root = freeGlobal_default || freeSelf || Function("return this")();
 var root_default = root;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Symbol.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Symbol.js
 var Symbol2 = root_default.Symbol;
 var Symbol_default = Symbol2;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getRawTag.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getRawTag.js
 var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 var nativeObjectToString = objectProto.toString;
@@ -11565,7 +11172,7 @@ function getRawTag(value) {
   try {
     value[symToStringTag] = void 0;
     var unmasked = true;
-  } catch (e2) {
+  } catch (e) {
   }
   var result = nativeObjectToString.call(value);
   if (unmasked) {
@@ -11579,7 +11186,7 @@ function getRawTag(value) {
 }
 var getRawTag_default = getRawTag;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_objectToString.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_objectToString.js
 var objectProto2 = Object.prototype;
 var nativeObjectToString2 = objectProto2.toString;
 function objectToString(value) {
@@ -11587,7 +11194,7 @@ function objectToString(value) {
 }
 var objectToString_default = objectToString;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseGetTag.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseGetTag.js
 var nullTag = "[object Null]";
 var undefinedTag = "[object Undefined]";
 var symToStringTag2 = Symbol_default ? Symbol_default.toStringTag : void 0;
@@ -11599,14 +11206,14 @@ function baseGetTag(value) {
 }
 var baseGetTag_default = baseGetTag;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isObject.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isObject.js
 function isObject2(value) {
   var type = typeof value;
   return value != null && (type == "object" || type == "function");
 }
 var isObject_default = isObject2;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isFunction.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isFunction.js
 var asyncTag = "[object AsyncFunction]";
 var funcTag = "[object Function]";
 var genTag = "[object GeneratorFunction]";
@@ -11620,11 +11227,11 @@ function isFunction(value) {
 }
 var isFunction_default = isFunction;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_coreJsData.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_coreJsData.js
 var coreJsData = root_default["__core-js_shared__"];
 var coreJsData_default = coreJsData;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isMasked.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isMasked.js
 var maskSrcKey = function() {
   var uid = /[^.]+$/.exec(coreJsData_default && coreJsData_default.keys && coreJsData_default.keys.IE_PROTO || "");
   return uid ? "Symbol(src)_1." + uid : "";
@@ -11634,25 +11241,25 @@ function isMasked(func) {
 }
 var isMasked_default = isMasked;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_toSource.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_toSource.js
 var funcProto = Function.prototype;
 var funcToString = funcProto.toString;
 function toSource(func) {
   if (func != null) {
     try {
       return funcToString.call(func);
-    } catch (e2) {
+    } catch (e) {
     }
     try {
       return func + "";
-    } catch (e2) {
+    } catch (e) {
     }
   }
   return "";
 }
 var toSource_default = toSource;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseIsNative.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseIsNative.js
 var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
 var reIsHostCtor = /^\[object .+?Constructor\]$/;
 var funcProto2 = Function.prototype;
@@ -11669,31 +11276,31 @@ function baseIsNative(value) {
 }
 var baseIsNative_default = baseIsNative;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getValue.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getValue.js
 function getValue(object2, key) {
   return object2 == null ? void 0 : object2[key];
 }
 var getValue_default = getValue;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getNative.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getNative.js
 function getNative(object2, key) {
   var value = getValue_default(object2, key);
   return baseIsNative_default(value) ? value : void 0;
 }
 var getNative_default = getNative;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_defineProperty.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_defineProperty.js
 var defineProperty = function() {
   try {
     var func = getNative_default(Object, "defineProperty");
     func({}, "", {});
     return func;
-  } catch (e2) {
+  } catch (e) {
   }
 }();
 var defineProperty_default = defineProperty;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseAssignValue.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseAssignValue.js
 function baseAssignValue(object2, key, value) {
   if (key == "__proto__" && defineProperty_default) {
     defineProperty_default(object2, key, {
@@ -11708,13 +11315,13 @@ function baseAssignValue(object2, key, value) {
 }
 var baseAssignValue_default = baseAssignValue;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/eq.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/eq.js
 function eq(value, other) {
   return value === other || value !== value && other !== other;
 }
 var eq_default = eq;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_assignValue.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_assignValue.js
 var objectProto4 = Object.prototype;
 var hasOwnProperty3 = objectProto4.hasOwnProperty;
 function assignValue(object2, key, value) {
@@ -11725,24 +11332,24 @@ function assignValue(object2, key, value) {
 }
 var assignValue_default = assignValue;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isArray.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isArray.js
 var isArray = Array.isArray;
 var isArray_default = isArray;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isObjectLike.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isObjectLike.js
 function isObjectLike(value) {
   return value != null && typeof value == "object";
 }
 var isObjectLike_default = isObjectLike;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isSymbol.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/isSymbol.js
 var symbolTag = "[object Symbol]";
 function isSymbol(value) {
   return typeof value == "symbol" || isObjectLike_default(value) && baseGetTag_default(value) == symbolTag;
 }
 var isSymbol_default = isSymbol;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isKey.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isKey.js
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/;
 var reIsPlainProp = /^\w*$/;
 function isKey(value, object2) {
@@ -11757,18 +11364,18 @@ function isKey(value, object2) {
 }
 var isKey_default = isKey;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_nativeCreate.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_nativeCreate.js
 var nativeCreate = getNative_default(Object, "create");
 var nativeCreate_default = nativeCreate;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashClear.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashClear.js
 function hashClear() {
   this.__data__ = nativeCreate_default ? nativeCreate_default(null) : {};
   this.size = 0;
 }
 var hashClear_default = hashClear;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashDelete.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashDelete.js
 function hashDelete(key) {
   var result = this.has(key) && delete this.__data__[key];
   this.size -= result ? 1 : 0;
@@ -11776,7 +11383,7 @@ function hashDelete(key) {
 }
 var hashDelete_default = hashDelete;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashGet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashGet.js
 var HASH_UNDEFINED = "__lodash_hash_undefined__";
 var objectProto5 = Object.prototype;
 var hasOwnProperty4 = objectProto5.hasOwnProperty;
@@ -11790,7 +11397,7 @@ function hashGet(key) {
 }
 var hashGet_default = hashGet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashHas.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashHas.js
 var objectProto6 = Object.prototype;
 var hasOwnProperty5 = objectProto6.hasOwnProperty;
 function hashHas(key) {
@@ -11799,7 +11406,7 @@ function hashHas(key) {
 }
 var hashHas_default = hashHas;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashSet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_hashSet.js
 var HASH_UNDEFINED2 = "__lodash_hash_undefined__";
 function hashSet(key, value) {
   var data = this.__data__;
@@ -11809,7 +11416,7 @@ function hashSet(key, value) {
 }
 var hashSet_default = hashSet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Hash.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Hash.js
 function Hash(entries) {
   var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
@@ -11825,14 +11432,14 @@ Hash.prototype.has = hashHas_default;
 Hash.prototype.set = hashSet_default;
 var Hash_default = Hash;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheClear.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheClear.js
 function listCacheClear() {
   this.__data__ = [];
   this.size = 0;
 }
 var listCacheClear_default = listCacheClear;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_assocIndexOf.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_assocIndexOf.js
 function assocIndexOf(array2, key) {
   var length = array2.length;
   while (length--) {
@@ -11844,7 +11451,7 @@ function assocIndexOf(array2, key) {
 }
 var assocIndexOf_default = assocIndexOf;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheDelete.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheDelete.js
 var arrayProto = Array.prototype;
 var splice = arrayProto.splice;
 function listCacheDelete(key) {
@@ -11863,20 +11470,20 @@ function listCacheDelete(key) {
 }
 var listCacheDelete_default = listCacheDelete;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheGet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheGet.js
 function listCacheGet(key) {
   var data = this.__data__, index = assocIndexOf_default(data, key);
   return index < 0 ? void 0 : data[index][1];
 }
 var listCacheGet_default = listCacheGet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheHas.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheHas.js
 function listCacheHas(key) {
   return assocIndexOf_default(this.__data__, key) > -1;
 }
 var listCacheHas_default = listCacheHas;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheSet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_listCacheSet.js
 function listCacheSet(key, value) {
   var data = this.__data__, index = assocIndexOf_default(data, key);
   if (index < 0) {
@@ -11892,7 +11499,7 @@ function listCacheSet(key, value) {
 }
 var listCacheSet_default = listCacheSet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_ListCache.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_ListCache.js
 function ListCache(entries) {
   var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
@@ -11908,11 +11515,11 @@ ListCache.prototype.has = listCacheHas_default;
 ListCache.prototype.set = listCacheSet_default;
 var ListCache_default = ListCache;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Map.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_Map.js
 var Map2 = getNative_default(root_default, "Map");
 var Map_default = Map2;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheClear.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheClear.js
 function mapCacheClear() {
   this.size = 0;
   this.__data__ = {
@@ -11923,21 +11530,21 @@ function mapCacheClear() {
 }
 var mapCacheClear_default = mapCacheClear;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isKeyable.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isKeyable.js
 function isKeyable(value) {
   var type = typeof value;
   return type == "string" || type == "number" || type == "symbol" || type == "boolean" ? value !== "__proto__" : value === null;
 }
 var isKeyable_default = isKeyable;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getMapData.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_getMapData.js
 function getMapData(map, key) {
   var data = map.__data__;
   return isKeyable_default(key) ? data[typeof key == "string" ? "string" : "hash"] : data.map;
 }
 var getMapData_default = getMapData;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheDelete.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheDelete.js
 function mapCacheDelete(key) {
   var result = getMapData_default(this, key)["delete"](key);
   this.size -= result ? 1 : 0;
@@ -11945,19 +11552,19 @@ function mapCacheDelete(key) {
 }
 var mapCacheDelete_default = mapCacheDelete;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheGet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheGet.js
 function mapCacheGet(key) {
   return getMapData_default(this, key).get(key);
 }
 var mapCacheGet_default = mapCacheGet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheHas.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheHas.js
 function mapCacheHas(key) {
   return getMapData_default(this, key).has(key);
 }
 var mapCacheHas_default = mapCacheHas;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheSet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_mapCacheSet.js
 function mapCacheSet(key, value) {
   var data = getMapData_default(this, key), size = data.size;
   data.set(key, value);
@@ -11966,7 +11573,7 @@ function mapCacheSet(key, value) {
 }
 var mapCacheSet_default = mapCacheSet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_MapCache.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_MapCache.js
 function MapCache(entries) {
   var index = -1, length = entries == null ? 0 : entries.length;
   this.clear();
@@ -11982,7 +11589,7 @@ MapCache.prototype.has = mapCacheHas_default;
 MapCache.prototype.set = mapCacheSet_default;
 var MapCache_default = MapCache;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/memoize.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/memoize.js
 var FUNC_ERROR_TEXT = "Expected a function";
 function memoize(func, resolver) {
   if (typeof func != "function" || resolver != null && typeof resolver != "function") {
@@ -12003,7 +11610,7 @@ function memoize(func, resolver) {
 memoize.Cache = MapCache_default;
 var memoize_default = memoize;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_memoizeCapped.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_memoizeCapped.js
 var MAX_MEMOIZE_SIZE = 500;
 function memoizeCapped(func) {
   var result = memoize_default(func, function(key) {
@@ -12017,7 +11624,7 @@ function memoizeCapped(func) {
 }
 var memoizeCapped_default = memoizeCapped;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_stringToPath.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_stringToPath.js
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 var reEscapeChar = /\\(\\)?/g;
 var stringToPath = memoizeCapped_default(function(string2) {
@@ -12032,7 +11639,7 @@ var stringToPath = memoizeCapped_default(function(string2) {
 });
 var stringToPath_default = stringToPath;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_arrayMap.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_arrayMap.js
 function arrayMap(array2, iteratee) {
   var index = -1, length = array2 == null ? 0 : array2.length, result = Array(length);
   while (++index < length) {
@@ -12042,7 +11649,7 @@ function arrayMap(array2, iteratee) {
 }
 var arrayMap_default = arrayMap;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseToString.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseToString.js
 var INFINITY = 1 / 0;
 var symbolProto = Symbol_default ? Symbol_default.prototype : void 0;
 var symbolToString = symbolProto ? symbolProto.toString : void 0;
@@ -12061,13 +11668,13 @@ function baseToString(value) {
 }
 var baseToString_default = baseToString;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/toString.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/toString.js
 function toString2(value) {
   return value == null ? "" : baseToString_default(value);
 }
 var toString_default = toString2;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_castPath.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_castPath.js
 function castPath(value, object2) {
   if (isArray_default(value)) {
     return value;
@@ -12078,7 +11685,7 @@ function castPath(value, object2) {
 }
 var castPath_default = castPath;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isIndex.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_isIndex.js
 var MAX_SAFE_INTEGER = 9007199254740991;
 var reIsUint = /^(?:0|[1-9]\d*)$/;
 function isIndex(value, length) {
@@ -12088,7 +11695,7 @@ function isIndex(value, length) {
 }
 var isIndex_default = isIndex;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_toKey.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_toKey.js
 var INFINITY2 = 1 / 0;
 function toKey(value) {
   if (typeof value == "string" || isSymbol_default(value)) {
@@ -12099,7 +11706,7 @@ function toKey(value) {
 }
 var toKey_default = toKey;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseSet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseSet.js
 function baseSet(object2, path, value, customizer) {
   if (!isObject_default(object2)) {
     return object2;
@@ -12125,13 +11732,13 @@ function baseSet(object2, path, value, customizer) {
 }
 var baseSet_default = baseSet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/set.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/set.js
 function set(object2, path, value) {
   return object2 == null ? object2 : baseSet_default(object2, path, value);
 }
 var set_default = set;
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/ResultsLog.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/ResultsLog.ts
 var ResultsLog = class {
   #results;
   /**
@@ -12242,7 +11849,7 @@ var resultRankings = {
   notSupported: 10
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/context/CoreContext.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/context/CoreContext.ts
 var CoreContext = class {
   /** Logger instance for the context */
   logger;
@@ -12569,7 +12176,7 @@ function flattenArgs(args) {
   }
 }
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/EntityType.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/EntityType.ts
 var EntityType = class {
   /** The entity type discriminator */
   type;
@@ -12616,11 +12223,20 @@ var EntityType = class {
    * ```
    */
   toString() {
-    return M(this.type).with("variable", () => "const").with("type", () => "type").exhaustive();
+    switch (this.type) {
+      case "variable":
+        return "const";
+      case "type":
+        return "type";
+      default: {
+        const _exhaustive = this.type;
+        throw new Error(`Unhandled entity type: ${_exhaustive}`);
+      }
+    }
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/Identifier.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/Identifier.ts
 var Identifier = class _Identifier {
   /** The identifier name */
   name;
@@ -12747,7 +12363,7 @@ var Identifier = class _Identifier {
   }
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/model/ModelBase.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/model/ModelBase.ts
 var ModelBase = class extends ContentBase {
   /** Content settings including export path and enrichment configuration */
   settings;
@@ -12941,7 +12557,7 @@ var ModelBase = class extends ContentBase {
   }
 };
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseGet.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/_baseGet.js
 function baseGet(object2, path) {
   path = castPath_default(path, object2);
   var index = 0, length = path.length;
@@ -12952,14 +12568,14 @@ function baseGet(object2, path) {
 }
 var baseGet_default = baseGet;
 
-// ../../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/get.js
+// ../../../../Library/Caches/deno/npm/registry.npmjs.org/lodash-es/4.17.21/get.js
 function get(object2, path, defaultValue) {
   var result = object2 == null ? void 0 : baseGet_default(object2, path);
   return result === void 0 ? defaultValue : result;
 }
 var get_default = get;
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/model/toModelBase.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/model/toModelBase.ts
 var toModelBase = (config) => {
   return class extends ModelBase {
     static id = config.id;
@@ -12984,7 +12600,7 @@ var toModelBase = (config) => {
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/dsl/model/toModelEntry.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/dsl/model/toModelEntry.ts
 var toModelEntry = ({ id, transform, toPreviewModule, toMappingModule, toEnrichmentSchema, toEnrichmentRequest }) => {
   return {
     id,
@@ -12997,7 +12613,7 @@ var toModelEntry = ({ id, transform, toPreviewModule, toMappingModule, toEnrichm
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/strings.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/strings.ts
 var capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
@@ -13008,7 +12624,7 @@ var camelCase = (str, { upperFirst, retainUnderscores } = {}) => {
   const startsWithDelimiter = retainUnderscores ? /^[^a-zA-Z0-9_]/.test(str) : /^[^a-zA-Z0-9]/.test(str);
   let isFirstMatch = true;
   const delimiterPattern = retainUnderscores ? /[^a-zA-Z0-9_]+([a-zA-Z0-9_]+)/g : /[^a-zA-Z0-9]+([a-zA-Z0-9]+)/g;
-  const camelCased = str.replace(delimiterPattern, (_2, matched) => {
+  const camelCased = str.replace(delimiterPattern, (_, matched) => {
     if (isFirstMatch && startsWithDelimiter && !upperFirst) {
       isFirstMatch = false;
       return matched;
@@ -13021,7 +12637,7 @@ var camelCase = (str, { upperFirst, retainUnderscores } = {}) => {
   return upperFirst ? capitalize(cleaned) : cleaned;
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/contact/contact-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/contact/contact-types.ts
 var oasContactData = object({
   oasType: literal("contact"),
   name: optional(string()),
@@ -13029,14 +12645,14 @@ var oasContactData = object({
   email: optional(string())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/discriminator/discriminator-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/discriminator/discriminator-types.ts
 var oasDiscriminatorData = object({
   oasType: literal("discriminator"),
   propertyName: string(),
   mapping: optional(record(string(), string()))
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/example/example-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/example/example-types.ts
 var oasExampleData = object({
   oasType: literal("example"),
   summary: optional(string()),
@@ -13044,7 +12660,7 @@ var oasExampleData = object({
   value: optional(unknown())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/license/license-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/license/license-types.ts
 var oasLicenseData = object({
   oasType: literal("license"),
   name: string(),
@@ -13052,7 +12668,7 @@ var oasLicenseData = object({
   identifier: optional(string())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/info/info-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/info/info-types.ts
 var oasInfoData = object({
   oasType: literal("info"),
   title: string(),
@@ -13063,7 +12679,7 @@ var oasInfoData = object({
   version: string()
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/ref/ref-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/ref/ref-types.ts
 var oasSchemaRefData = object({
   oasType: literal("ref"),
   refType: literal("schema"),
@@ -13121,17 +12737,17 @@ var oasRefData = union([
   oasSecuritySchemeRefData
 ]);
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/helpers/sanitizePropertyName.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/helpers/sanitizePropertyName.ts
 var import_helper_validator_identifier_7_27 = __toESM(require_lib());
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/tag/tag-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/tag/tag-types.ts
 var oasTagData = object({
   oasType: literal("tag"),
   name: string(),
   description: optional(markdown)
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/oas/unknown/unknown-types.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/oas/unknown/unknown-types.ts
 var oasUnknownData = object({
   oasType: literal("schema"),
   title: optional(string()),
@@ -13140,7 +12756,7 @@ var oasUnknownData = object({
   type: literal("unknown")
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/run/toArtifacts.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/run/toArtifacts.ts
 var toArtifacts = ({ traceId, spanId, documentObject, settings, prettier, toGeneratorConfigMap, logsPath, startAt, silent, stackTrail }) => {
   const context = new CoreContext({
     spanId,
@@ -13173,7 +12789,7 @@ var toArtifacts = ({ traceId, spanId, documentObject, settings, prettier, toGene
   };
 };
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/DenoJson.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/DenoJson.ts
 var rootDenoJson = looseObject({
   imports: optional(record(string(), string())),
   exports: optional(record(string(), string())),
@@ -13189,13 +12805,13 @@ var packageDenoJson = looseObject({
   ])
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/ModuleExport.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/ModuleExport.ts
 var moduleExport = object({
   exportName: string(),
   exportPath: string()
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Enrichments.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Enrichments.ts
 var formFieldItem = object({
   id: string(),
   accessorPath: array(string()),
@@ -13234,7 +12850,7 @@ var methodEnrichments = record(string(), operationEnrichments);
 var pathEnrichments = record(string(), methodEnrichments);
 var generatorEnrichments = record(string(), pathEnrichments);
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Results.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Results.ts
 var resultType = union([
   literal("success"),
   literal("warning"),
@@ -13249,7 +12865,7 @@ var resultsItem = record(string(), union([
   array(lazy(() => resultsItem))
 ]));
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Preview.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Preview.ts
 var operationSource = object({
   type: literal("operation"),
   generatorId: string(),
@@ -13294,7 +12910,7 @@ var mapping = object({
   source
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Manifest.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Manifest.ts
 var manifestEntry = object({
   lines: number(),
   characters: number(),
@@ -13317,7 +12933,7 @@ var manifestContent = object({
   endAt: number()
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/PrettierConfig.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/PrettierConfig.ts
 var prettierConfigType = object({
   printWidth: optional(number()),
   tabWidth: optional(number()),
@@ -13370,7 +12986,7 @@ var prettierConfigType = object({
   singleAttributePerLine: optional(boolean())
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/types/Settings.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/types/Settings.ts
 var modulePackage = object({
   rootPath: string(),
   moduleName: optional(string())
@@ -13397,49 +13013,54 @@ var skmtcClientConfig = object({
   settings: clientSettings
 });
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/typescript/FunctionParameter.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/typescript/FunctionParameter.ts
 var import_helper_validator_identifier_7_272 = __toESM(require_lib());
 
-// deno:https://jsr.io/@skmtc/core/0.0.961/typescript/identifiers.ts
+// deno:https://jsr.io/@skmtc/core/0.0.964/typescript/identifiers.ts
 var import_helper_validator_identifier_7_273 = __toESM(require_lib());
 
-// deno:https://jsr.io/@skmtc/worker/0.0.33/mod.ts
+// deno:https://jsr.io/@skmtc/worker/0.0.36/mod.ts
 var toWorker = (toGeneratorConfigMap) => {
-  self.onmessage = async (e2) => {
-    const { type, payload } = e2.data;
+  self.onmessage = async (e) => {
+    const { type, payload } = e.data;
     try {
-      await M(type).with("GENERATE", async () => {
-        const { documentObject, clientSettings: clientSettings2 } = payload;
-        const now = Date.now();
-        const traceId = `trace-${now}`;
-        const spanId = `span-${now}`;
-        const stackTrail = new StackTrail([
-          traceId,
-          spanId
-        ]);
-        const { artifacts, manifest } = toArtifacts({
-          traceId,
-          spanId,
-          startAt: now,
-          documentObject,
-          prettier: void 0,
-          settings: clientSettings2,
-          stackTrail,
-          toGeneratorConfigMap,
-          logsPath: void 0,
-          silent: true
-        });
-        self.postMessage({
-          type: "RESULT",
-          artifacts,
-          manifest
-        });
-      }).otherwise(() => {
-        self.postMessage({
-          type: "ERROR",
-          error: `Unknown message type: ${type}`
-        });
-      });
+      switch (type) {
+        case "GENERATE": {
+          const { documentObject, clientSettings: clientSettings2 } = payload;
+          const now = Date.now();
+          const traceId = `trace-${now}`;
+          const spanId = `span-${now}`;
+          const stackTrail = new StackTrail([
+            traceId,
+            spanId
+          ]);
+          const { artifacts, manifest } = toArtifacts({
+            traceId,
+            spanId,
+            startAt: now,
+            documentObject,
+            prettier: void 0,
+            settings: clientSettings2,
+            stackTrail,
+            toGeneratorConfigMap,
+            logsPath: void 0,
+            silent: true
+          });
+          self.postMessage({
+            type: "RESULT",
+            artifacts,
+            manifest
+          });
+          break;
+        }
+        default: {
+          self.postMessage({
+            type: "ERROR",
+            error: `Unknown message type: ${type}`
+          });
+          break;
+        }
+      }
     } catch (error) {
       if (error instanceof Error) {
         self.postMessage({
@@ -13504,15 +13125,12 @@ var ZodString = class extends ContentBase {
   }
   toString() {
     const { enums } = this;
-    const content = M({
-      enums
-    }).with({
-      enums: z.array()
-    }, (matched) => {
-      return matched.enums.length === 1 ? `z.literal("${matched.enums[0]}")` : `z.enum([${matched.enums.map((str) => `"${str}"`).join(", ")}])`;
-    }).otherwise(() => {
-      return `z.string()`;
-    });
+    let content;
+    if (enums && Array.isArray(enums)) {
+      content = enums.length === 1 ? `z.literal("${enums[0]}")` : `z.enum([${enums.map((str) => `"${str}"`).join(", ")}])`;
+    } else {
+      content = `z.string()`;
+    }
     return applyModifiers(content, this.modifiers);
   }
 };
@@ -13552,7 +13170,7 @@ var ZodArray = class extends ContentBase {
 // gen-zod/deno.json
 var deno_default = {
   name: "@skmtc/gen-zod",
-  version: "0.0.44",
+  version: "0.0.45",
   exports: "./mod.ts",
   tasks: {
     test: "deno test --allow-env --allow-sys --allow-read",
@@ -13767,21 +13385,21 @@ var ZodRecord = class extends ContentBase {
       context,
       generatorKey
     });
-    this.value = M(schema).with(true, () => new ZodUnknown({
-      context,
-      destinationPath,
-      generatorKey
-    })).with(z.when((schema2) => isEmpty(schema2)), () => new ZodUnknown({
-      context,
-      destinationPath,
-      generatorKey
-    })).otherwise((matched) => toZodValue({
-      destinationPath,
-      schema: matched,
-      required: true,
-      context,
-      rootRef
-    }));
+    if (schema === true || isEmpty(schema)) {
+      this.value = new ZodUnknown({
+        context,
+        destinationPath,
+        generatorKey
+      });
+    } else {
+      this.value = toZodValue({
+        destinationPath,
+        schema,
+        required: true,
+        context,
+        rootRef
+      });
+    }
   }
   toString() {
     return `z.record(z.string(), ${this.value})`;
@@ -13875,15 +13493,12 @@ var ZodInteger = class extends ContentBase {
   }
   toString() {
     const { enums } = this;
-    const content = M({
-      enums
-    }).with({
-      enums: z.array()
-    }, ({ enums: enums2 }) => {
-      return enums2.length === 1 ? `z.literal(${enums2[0]})` : `z.union([${enums2.map((e2) => `z.literal(${e2})`).join(", ")}])`;
-    }).otherwise(() => {
-      return `z.number().int()`;
-    });
+    let content;
+    if (enums && Array.isArray(enums)) {
+      content = enums.length === 1 ? `z.literal(${enums[0]})` : `z.union([${enums.map((e) => `z.literal(${e})`).join(", ")}])`;
+    } else {
+      content = `z.number().int()`;
+    }
     return applyModifiers(content, this.modifiers);
   }
 };
@@ -13944,105 +13559,100 @@ var toZodValue = ({ schema, destinationPath, required, context, rootRef }) => {
   const generatorKey = toGeneratorOnlyKey({
     generatorId: zodEntry.id
   });
-  return M(schema).with({
-    type: "custom"
-  }, (custom) => custom).with({
-    type: "ref"
-  }, (ref) => {
-    return new ZodRef({
-      context,
-      destinationPath,
-      refName: toRefName(ref.$ref),
-      modifiers,
-      rootRef
-    });
-  }).with({
-    type: "array"
-  }, ({ items }) => {
-    return new ZodArray({
-      context,
-      destinationPath,
-      modifiers,
-      items,
-      generatorKey,
-      rootRef
-    });
-  }).with({
-    type: "object"
-  }, (objectSchema) => {
-    return new ZodObject({
-      context,
-      destinationPath,
-      objectSchema,
-      modifiers,
-      generatorKey,
-      rootRef
-    });
-  }).with({
-    type: "union"
-  }, ({ members, discriminator }) => {
-    return new ZodUnion({
-      context,
-      destinationPath,
-      members,
-      discriminator,
-      modifiers,
-      generatorKey,
-      rootRef
-    });
-  }).with({
-    type: "number"
-  }, () => new ZodNumber({
-    context,
-    modifiers,
-    destinationPath,
-    generatorKey
-  })).with({
-    type: "integer"
-  }, (integerSchema2) => {
-    return new ZodInteger({
-      context,
-      integerSchema: integerSchema2,
-      modifiers,
-      destinationPath,
-      generatorKey
-    });
-  }).with({
-    type: "boolean"
-  }, () => new ZodBoolean({
-    context,
-    modifiers,
-    destinationPath,
-    generatorKey
-  })).with({
-    type: "void"
-  }, () => new ZodVoid({
-    context,
-    destinationPath,
-    generatorKey
-  })).with({
-    type: "string"
-  }, (stringSchema) => new ZodString({
-    context,
-    stringSchema,
-    modifiers,
-    destinationPath,
-    generatorKey
-  })).with({
-    type: "unknown"
-  }, () => new ZodUnknown({
-    context,
-    destinationPath,
-    generatorKey
-  })).exhaustive();
+  switch (schema.type) {
+    case "custom":
+      return schema;
+    case "ref":
+      return new ZodRef({
+        context,
+        destinationPath,
+        refName: toRefName(schema.$ref),
+        modifiers,
+        rootRef
+      });
+    case "array":
+      return new ZodArray({
+        context,
+        destinationPath,
+        modifiers,
+        items: schema.items,
+        generatorKey,
+        rootRef
+      });
+    case "object":
+      return new ZodObject({
+        context,
+        destinationPath,
+        objectSchema: schema,
+        modifiers,
+        generatorKey,
+        rootRef
+      });
+    case "union":
+      return new ZodUnion({
+        context,
+        destinationPath,
+        members: schema.members,
+        discriminator: schema.discriminator,
+        modifiers,
+        generatorKey,
+        rootRef
+      });
+    case "number":
+      return new ZodNumber({
+        context,
+        modifiers,
+        destinationPath,
+        generatorKey
+      });
+    case "integer":
+      return new ZodInteger({
+        context,
+        integerSchema: schema,
+        modifiers,
+        destinationPath,
+        generatorKey
+      });
+    case "boolean":
+      return new ZodBoolean({
+        context,
+        modifiers,
+        destinationPath,
+        generatorKey
+      });
+    case "void":
+      return new ZodVoid({
+        context,
+        destinationPath,
+        generatorKey
+      });
+    case "string":
+      return new ZodString({
+        context,
+        stringSchema: schema,
+        modifiers,
+        destinationPath,
+        generatorKey
+      });
+    case "unknown":
+      return new ZodUnknown({
+        context,
+        destinationPath,
+        generatorKey
+      });
+    default: {
+      const _exhaustive = schema;
+      throw new Error(`Unhandled schema type: ${_exhaustive.type}`);
+    }
+  }
 };
 
 // worker.ts
 var worker_default = mod_default(() => Object.fromEntries([
   zodEntry
-].map((g2) => [
-  g2.id,
-  g2
+].map((g) => [
+  g.id,
+  g
 ])));
 export {
   worker_default as default

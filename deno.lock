@@ -5,9 +5,9 @@
     "jsr:@cliffy/flags@1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@cliffy/internal@1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@cliffy/table@1.0.0-rc.8": "1.0.0-rc.8",
-    "jsr:@skmtc/cli@0.0.383": "0.0.383",
-    "jsr:@skmtc/convert@^0.0.37": "0.0.37",
-    "jsr:@skmtc/core@^0.0.962": "0.0.962",
+    "jsr:@skmtc/cli@0.0.385": "0.0.385",
+    "jsr:@skmtc/convert@^0.0.39": "0.0.39",
+    "jsr:@skmtc/core@^0.0.964": "0.0.964",
     "jsr:@std/fmt@^1.0.5": "1.0.8",
     "jsr:@std/fmt@~1.0.2": "1.0.8",
     "jsr:@std/fs@^1.0.11": "1.0.19",
@@ -47,8 +47,8 @@
         "jsr:@std/fmt@~1.0.2"
       ]
     },
-    "@skmtc/cli@0.0.383": {
-      "integrity": "6c65ba7406b0b1a57ba37db62f3b48fe8d2b752282682d5b7f591d29b896be90",
+    "@skmtc/cli@0.0.385": {
+      "integrity": "5aa4a3a717504c69891c62449ad8e98c6e8bb60c24562ddade5398c6153c26de",
       "dependencies": [
         "jsr:@cliffy/command",
         "jsr:@skmtc/convert",
@@ -58,14 +58,14 @@
         "jsr:@std/semver"
       ]
     },
-    "@skmtc/convert@0.0.37": {
-      "integrity": "6f2cd42d7f6341d1ece465d817759311f24f64857315a80de87362d087b699d9",
+    "@skmtc/convert@0.0.39": {
+      "integrity": "ecca1713608421c0c8f3da47e8ba2ae7d8ad5816591ddbd806cfc9ad7e2eae31",
       "dependencies": [
         "jsr:@std/yaml"
       ]
     },
-    "@skmtc/core@0.0.962": {
-      "integrity": "bc147426996b8f97e32c986b3d82745f9efa1652de9190e8ff78d1278e7bbc79",
+    "@skmtc/core@0.0.964": {
+      "integrity": "22504c5e800e4054f1549c2a2c214929f32f0ab4995f35913aff93c65692097f",
       "dependencies": [
         "jsr:@std/log",
         "jsr:@std/path@^1.0.9"
