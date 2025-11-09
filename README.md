@@ -4,9 +4,9 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 ## 🏆 Key Findings
 
-- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **1.21s**
-- **Speedup:** skmtc is **9.6x faster** than openapi-ts and **3.9x faster** than orval-zod
-- **Most Consistent:** skmtc has the lowest standard deviation (0.055s)
+- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.79s**
+- **Speedup:** skmtc is **14.5x faster** than openapi-ts and **5.9x faster** than orval-zod-zod
+- **Most Consistent:** skmtc has the lowest standard deviation (0.019s)
 
 <!-- BENCHMARK_RESULTS_START -->
 
@@ -14,10 +14,10 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 1.210s | 1.15s | 1.385s | 0.068s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.773s | 4.70s | 4.893s | 0.055s | 3.9x slower |
-| 🥉 #3 | kubb-zod | 7.708s | 7.50s | 7.982s | 0.177s | 6.4x slower |
-| #4 | openapi-ts-zod | 11.636s | 11.23s | 12.040s | 0.255s | 9.6x slower |
+| 🥇 #1 | skmtc-zod | 0.790s | 0.78s | 0.830s | 0.019s | **1.0x** (baseline) |
+| 🥈 #2 | orval-zod | 4.685s | 4.66s | 4.721s | 0.019s | 5.9x slower |
+| 🥉 #3 | kubb-zod | 7.354s | 7.21s | 7.569s | 0.114s | 9.3x slower |
+| #4 | openapi-ts-zod | 11.480s | 11.26s | 11.790s | 0.204s | 14.5x slower |
 
 ## Performance Visualization
 
@@ -26,25 +26,25 @@ gantt
     title 🚀 Generation Time Comparison
     dateFormat X
     axisFormat %Ls
-
+    
     section Skmtc
-    1.21s :0, 1
-
+    0.79s :0, 0
+    
     section Orval
-    4.77s :0, 4
-
+    4.69s :0, 4
+    
     section Kubb
-    7.71s :0, 7
-
+    7.35s :0, 7
+    
     section openapi-ts
-    11.64s :0, 11
+    11.48s :0, 11
 ```
 
 ### Test Environment
 
 - **Test Specification:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
 - **Iterations:** 10 runs per tool with 1 warmup run
-- **Last Updated:** 2025-11-08
+- **Last Updated:** 2025-11-09
 
 <!-- BENCHMARK_RESULTS_END -->
 

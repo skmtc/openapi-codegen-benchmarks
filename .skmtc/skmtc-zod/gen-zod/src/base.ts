@@ -11,9 +11,7 @@ export const ZodBase = toModelBase({
     return Identifier.createVariable(name)
   },
 
-  toExportPath(refName: RefName): string {
-    const { name } = this.toIdentifier(refName)
-
-    return join('@', 'types', `${decapitalize(name)}.generated.ts`)
+  toExportPath(): string {
+    return join('@', `schemas.generated.ts`)
   }
 })

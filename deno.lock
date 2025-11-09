@@ -1,0 +1,193 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@cliffy/command@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/flags@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/internal@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/table@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@skmtc/cli@0.0.383": "0.0.383",
+    "jsr:@skmtc/convert@^0.0.37": "0.0.37",
+    "jsr:@skmtc/core@^0.0.962": "0.0.962",
+    "jsr:@std/fmt@^1.0.5": "1.0.8",
+    "jsr:@std/fmt@~1.0.2": "1.0.8",
+    "jsr:@std/fs@^1.0.11": "1.0.19",
+    "jsr:@std/fs@^1.0.7": "1.0.19",
+    "jsr:@std/internal@^1.0.10": "1.0.12",
+    "jsr:@std/io@~0.225.2": "0.225.2",
+    "jsr:@std/log@~0.224.6": "0.224.14",
+    "jsr:@std/path@^1.0.9": "1.1.2",
+    "jsr:@std/path@^1.1.1": "1.1.2",
+    "jsr:@std/semver@^1.0.5": "1.0.6",
+    "jsr:@std/text@~1.0.7": "1.0.16",
+    "jsr:@std/yaml@^1.0.5": "1.0.10"
+  },
+  "jsr": {
+    "@cliffy/command@1.0.0-rc.8": {
+      "integrity": "758147790797c74a707e5294cc7285df665422a13d2a483437092ffce40b5557",
+      "dependencies": [
+        "jsr:@cliffy/flags",
+        "jsr:@cliffy/internal",
+        "jsr:@cliffy/table",
+        "jsr:@std/fmt@~1.0.2",
+        "jsr:@std/text"
+      ]
+    },
+    "@cliffy/flags@1.0.0-rc.8": {
+      "integrity": "0f1043ce6ef037ba1cb5fe6b1bcecb25dc2f29371a1c17f278ab0f45e4b6f46c",
+      "dependencies": [
+        "jsr:@std/text"
+      ]
+    },
+    "@cliffy/internal@1.0.0-rc.8": {
+      "integrity": "34cdf2fad9b084b5aed493b138d573f52d4e988767215f7460daf0b918ff43d8"
+    },
+    "@cliffy/table@1.0.0-rc.8": {
+      "integrity": "8bbcdc2ba5e0061b4b13810a24e6f5c6ab19c09f0cce9eb691ccd76c7c6c9db5",
+      "dependencies": [
+        "jsr:@std/fmt@~1.0.2"
+      ]
+    },
+    "@skmtc/cli@0.0.383": {
+      "integrity": "6c65ba7406b0b1a57ba37db62f3b48fe8d2b752282682d5b7f591d29b896be90",
+      "dependencies": [
+        "jsr:@cliffy/command",
+        "jsr:@skmtc/convert",
+        "jsr:@skmtc/core",
+        "jsr:@std/fs@^1.0.7",
+        "jsr:@std/path@^1.0.9",
+        "jsr:@std/semver"
+      ]
+    },
+    "@skmtc/convert@0.0.37": {
+      "integrity": "6f2cd42d7f6341d1ece465d817759311f24f64857315a80de87362d087b699d9",
+      "dependencies": [
+        "jsr:@std/yaml"
+      ]
+    },
+    "@skmtc/core@0.0.962": {
+      "integrity": "bc147426996b8f97e32c986b3d82745f9efa1652de9190e8ff78d1278e7bbc79",
+      "dependencies": [
+        "jsr:@std/log",
+        "jsr:@std/path@^1.0.9"
+      ]
+    },
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    },
+    "@std/fs@1.0.19": {
+      "integrity": "051968c2b1eae4d2ea9f79a08a3845740ef6af10356aff43d3e2ef11ed09fb06",
+      "dependencies": [
+        "jsr:@std/path@^1.1.1"
+      ]
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/io@0.225.2": {
+      "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7"
+    },
+    "@std/log@0.224.14": {
+      "integrity": "257f7adceee3b53bb2bc86c7242e7d1bc59729e57d4981c4a7e5b876c808f05e",
+      "dependencies": [
+        "jsr:@std/fmt@^1.0.5",
+        "jsr:@std/fs@^1.0.11",
+        "jsr:@std/io"
+      ]
+    },
+    "@std/path@1.1.2": {
+      "integrity": "c0b13b97dfe06546d5e16bf3966b1cadf92e1cc83e56ba5476ad8b498d9e3038",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/semver@1.0.6": {
+      "integrity": "b7c98ae2843547cf3f7ac37f3995889e6e4cee0a97b57b57f17f62722843303c"
+    },
+    "@std/text@1.0.16": {
+      "integrity": "ddb9853b75119a2473857d691cf1ec02ad90793a2e8b4a4ac49d7354281a0cf8"
+    },
+    "@std/yaml@1.0.10": {
+      "integrity": "245706ea3511cc50c8c6d00339c23ea2ffa27bd2c7ea5445338f8feff31fa58e"
+    }
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:turbo@^2.3.3",
+        "npm:typescript@^5.9.3"
+      ]
+    },
+    "members": {
+      "kubb-zod": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@eslint/js@^9.36.0",
+            "npm:@kubb/cli@^4.5.8",
+            "npm:@kubb/core@^4.5.8",
+            "npm:@kubb/plugin-oas@^4.5.8",
+            "npm:@kubb/plugin-ts@^4.5.8",
+            "npm:@kubb/plugin-zod@^4.5.8",
+            "npm:@types/node@^24.6.0",
+            "npm:@types/react-dom@^19.1.9",
+            "npm:@types/react@^19.1.16",
+            "npm:@vitejs/plugin-react@^5.0.4",
+            "npm:eslint-plugin-react-hooks@^5.2.0",
+            "npm:eslint-plugin-react-refresh@~0.4.22",
+            "npm:eslint@^9.36.0",
+            "npm:globals@^16.4.0",
+            "npm:react-dom@^19.1.1",
+            "npm:react@^19.1.1",
+            "npm:typescript-eslint@^8.45.0",
+            "npm:typescript@~5.9.3",
+            "npm:vite@^7.1.7",
+            "npm:zod@^4.1.12"
+          ]
+        }
+      },
+      "openapi-ts-zod": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@eslint/js@^9.36.0",
+            "npm:@hey-api/openapi-ts@0.86.8",
+            "npm:@types/node@^24.6.0",
+            "npm:@types/react-dom@^19.1.9",
+            "npm:@types/react@^19.1.16",
+            "npm:@vitejs/plugin-react@^5.0.4",
+            "npm:eslint-plugin-react-hooks@^5.2.0",
+            "npm:eslint-plugin-react-refresh@~0.4.22",
+            "npm:eslint@^9.36.0",
+            "npm:globals@^16.4.0",
+            "npm:react-dom@^19.1.1",
+            "npm:react@^19.1.1",
+            "npm:typescript-eslint@^8.45.0",
+            "npm:typescript@~5.9.3",
+            "npm:vite@^7.1.7",
+            "npm:zod@^4.1.12"
+          ]
+        }
+      },
+      "orval-zod": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@eslint/js@^9.36.0",
+            "npm:@types/node@^24.6.0",
+            "npm:@types/react-dom@^19.1.9",
+            "npm:@types/react@^19.1.16",
+            "npm:@vitejs/plugin-react@^5.0.4",
+            "npm:eslint-plugin-react-hooks@^5.2.0",
+            "npm:eslint-plugin-react-refresh@~0.4.22",
+            "npm:eslint@^9.36.0",
+            "npm:globals@^16.4.0",
+            "npm:orval@8.0.0-rc.0",
+            "npm:react-dom@^19.1.1",
+            "npm:react@^19.1.1",
+            "npm:typescript-eslint@^8.45.0",
+            "npm:typescript@~5.9.3",
+            "npm:vite@^7.1.7",
+            "npm:zod@^4.1.12"
+          ]
+        }
+      }
+    }
+  }
+}
