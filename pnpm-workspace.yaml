@@ -1,0 +1,7 @@
+packages:
+  - kubb-zod
+  - openapi-ts-zod
+  - orval-zod
+onlyBuiltDependencies:
+  - es5-ext
+  - esbuild

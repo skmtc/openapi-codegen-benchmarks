@@ -1,0 +1,31 @@
+{
+  "name": "@skmtc/openapi-codegen-benchmarks",
+  "description": "OpenAPI code generation performance comparison between Orval, Kubb, Hey API and Skmtc",
+  "private": true,
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scmtc/openapi-codegen-benchmarks.git"
+  },
+  "author": "Skmtc Contributors",
+  "bugs": "https://github.com/scmtc/openapi-codegen-benchmarks/issues",
+  "keywords": [
+    "openapi",
+    "swagger",
+    "typescript",
+    "codegen",
+    "code generator"
+  ],
+  "workspaces": [
+    "kubb-zod",
+    "openapi-ts-zod",
+    "orval-zod"
+  ]
+}

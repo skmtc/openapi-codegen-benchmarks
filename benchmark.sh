@@ -18,7 +18,7 @@ hyperfine \
   --show-output \
   --export-json "$RESULTS_JSON" \
   --prepare 'rm -rf orval-zod/src/gen/* openapi-ts-zod/src/client/* kubb-zod/src/gen/* skmtc-zod-output/*' \
-  -n skmtc-zod 'deno run -A --unstable-worker-options jsr:@skmtc/cli@0.0.381 generate skmtc-zod .skmtc/openapi.json' \
+  -n skmtc-zod 'deno run -A --unstable-worker-options jsr:@skmtc/cli@0.0.382 generate skmtc-zod .skmtc/skmtc-zod/openapi.json' \
   -n orval-zod 'cd orval-zod && pnpm generate:api:github' \
   -n kubb-zod 'cd kubb-zod && pnpm generate' \
   -n openapi-ts-zod 'cd openapi-ts-zod && pnpm generate:api'
