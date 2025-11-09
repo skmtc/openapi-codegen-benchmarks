@@ -95,21 +95,22 @@ MARKER_EOF
 gantt
     title 🚀 Generation Time Comparison
     dateFormat X
-    axisFormat %Ls
+    axisFormat %.1f
 MARKER_EOF
 
     # Generate Gantt chart with separate sections per tool for better readability
     jq -r '.results | sort_by(.mean) | .[] | @json' "$RESULTS_JSON" | while read -r result; do
         TOOL_NAME=$(echo "$result" | jq -r '.command' | sed 's/-zod$//')
         MEAN_TIME=$(echo "$result" | jq -r '.mean | . * 100 | round / 100')
-        FLOOR_TIME=$(echo "$result" | jq -r '.mean | floor')
+        # Convert to milliseconds for better precision in the chart
+        MS_TIME=$(echo "$result" | jq -r '.mean | . * 1000 | round')
 
         # Capitalize and format tool name for display
         DISPLAY_NAME=$(echo "$TOOL_NAME" | sed 's/skmtc/Skmtc/' | sed 's/orval/Orval/' | sed 's/kubb/Kubb/' | sed 's/openapi-ts/openapi-ts/')
 
         echo "    " >> "$TEMP_CONTENT"
         echo "    section $DISPLAY_NAME" >> "$TEMP_CONTENT"
-        echo "    ${MEAN_TIME}s :0, $FLOOR_TIME" >> "$TEMP_CONTENT"
+        echo "    ${MEAN_TIME}s :0, $MS_TIME" >> "$TEMP_CONTENT"
     done
 
     cat >> "$TEMP_CONTENT" << 'MARKER_EOF'

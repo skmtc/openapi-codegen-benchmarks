@@ -4,9 +4,9 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 ## 🏆 Key Findings
 
-- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.77s**
-- **Speedup:** skmtc is **14.7x faster** than openapi-ts and **6.2x faster** than orval-zod-zod-zod-zod
-- **Most Consistent:** skmtc has the lowest standard deviation (0.011s)
+- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.78s**
+- **Speedup:** skmtc is **14.8x faster** than openapi-ts and **6.2x faster** than orval-zod-zod-zod-zod-zod
+- **Most Consistent:** skmtc has the lowest standard deviation (0.022s)
 
 <!-- BENCHMARK_RESULTS_START -->
 
@@ -14,10 +14,10 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 0.767s | 0.74s | 0.777s | 0.011s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.763s | 4.66s | 4.853s | 0.059s | 6.2x slower |
-| 🥉 #3 | kubb-zod | 7.461s | 7.30s | 7.718s | 0.158s | 9.7x slower |
-| #4 | openapi-ts-zod | 11.281s | 11.12s | 11.686s | 0.216s | 14.7x slower |
+| 🥇 #1 | skmtc-zod | 0.777s | 0.72s | 0.804s | 0.022s | **1.0x** (baseline) |
+| 🥈 #2 | orval-zod | 4.841s | 4.76s | 4.922s | 0.051s | 6.2x slower |
+| 🥉 #3 | kubb-zod | 7.592s | 7.34s | 7.922s | 0.200s | 9.8x slower |
+| #4 | openapi-ts-zod | 11.510s | 11.26s | 11.930s | 0.219s | 14.8x slower |
 
 ## Performance Visualization
 
@@ -25,25 +25,27 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 gantt
     title 🚀 Generation Time Comparison
     dateFormat X
-    axisFormat %Ls
+    axisFormat %.1f
     
     section Skmtc
-    0.77s :0, 0
+    0.78s :0, 777
     
     section Orval
-    4.76s :0, 4
+    4.84s :0, 4841
     
     section Kubb
-    7.46s :0, 7
+    7.59s :0, 7592
     
     section openapi-ts
-    11.28s :0, 11
+    11.51s :0, 11510
 ```
 
 ### Test Environment
 
 - **Test Specification:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
 - **Iterations:** 10 runs per tool with 1 warmup run
+- **Output:** Zod schemas for all models in 1 file
+- **Device:** Mac Studio M1 Max, 32GB memory
 - **Last Updated:** 2025-11-09
 
 <!-- BENCHMARK_RESULTS_END -->
