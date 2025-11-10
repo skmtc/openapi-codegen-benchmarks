@@ -2,3 +2,4 @@ node_modules
 .settings
 .DS_Store
 *.gen.ts
+./skmtc/skmtc-zod/bundle.js
