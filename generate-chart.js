@@ -68,9 +68,10 @@ chartLines.forEach((line, idx) => {
     const result = results[idx];
     const relative = (result.mean / fastestTime).toFixed(1);
     const relativeText = idx === 0 ? '1.0x' : `${relative}x`;
+    const mean = `${result.meanFormatted}s`
 
     // Format label with padding
-    const label = `${result.name.padEnd(14)} ${result.meanFormatted}s `;
+    const label = `${result.name.padEnd(15)} ${mean.padEnd(6)} `;
     console.log(`${label} ${line} ${relativeText}`);
   }
 });

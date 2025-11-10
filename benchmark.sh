@@ -12,6 +12,15 @@ echo ""
 # Export results to JSON for processing
 RESULTS_JSON="benchmark-results.json"
 
+# Install dependencies
+pnpm install
+
+# Install skmtc
+deno install -gA --unstable-worker-options jsr:@skmtc/cli@0.0.386 -f
+
+# Bundle the skmtc-zod project
+deno run -A .skmtc/skmtc.ts bundle skmtc-zod
+
 hyperfine \
   --runs 10 \
   --warmup 1 \
