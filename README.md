@@ -21,43 +21,17 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 ## Performance Visualization
 
-### Option 1: Unicode Block Bars
-
 ```
 🚀 Generation Time Comparison (lower is better)
 
-skmtc-zod      0.41s  ███ 1.0x
-orval-zod      4.31s  ████████████████████████████████ 10.5x
-kubb-zod       6.58s  ████████████████████████████████████████████████ 16.1x
-openapi-ts-zod 11.41s ████████████████████████████████████████████████████████████████████████████████████ 27.9x
-               └────────────────────────────────────────────────────────────────────────────────────────────┘
-               0s                          5s                          10s                         12s
+skmtc-zod      0.41s  █▊ 1.0x
+orval-zod      4.31s  ██████████████████ 10.5x
+kubb-zod       6.58s  ███████████████████████████▌ 16.1x
+openapi-ts-zod 11.41s ███████████████████████████████████████████████▋ 27.9x
+                        ◺ 0.00                                     12.00 ◿
 ```
 
-### Option 2: HTML Colored Bars
-
-<table>
-<tr>
-  <td width="140"><strong>skmtc-zod</strong></td>
-  <td width="80" align="right">0.41s</td>
-  <td><img src="https://via.placeholder.com/30x20/22c55e/22c55e" alt="bar"/><code>1.0x</code></td>
-</tr>
-<tr>
-  <td><strong>orval-zod</strong></td>
-  <td align="right">4.31s</td>
-  <td><img src="https://via.placeholder.com/315x20/3b82f6/3b82f6" alt="bar"/><code>10.5x</code></td>
-</tr>
-<tr>
-  <td><strong>kubb-zod</strong></td>
-  <td align="right">6.58s</td>
-  <td><img src="https://via.placeholder.com/483x20/f59e0b/f59e0b" alt="bar"/><code>16.1x</code></td>
-</tr>
-<tr>
-  <td><strong>openapi-ts-zod</strong></td>
-  <td align="right">11.41s</td>
-  <td><img src="https://via.placeholder.com/837x20/ef4444/ef4444" alt="bar"/><code>27.9x</code></td>
-</tr>
-</table>
+*Chart generated using [wunderbar](https://github.com/gribnoysup/wunderbar) with partial block characters for precise visualization*
 
 ### Test Environment
 
@@ -75,7 +49,13 @@ Run the benchmarks yourself:
 ./benchmark.sh
 ```
 
+The script automatically:
+- Runs benchmarks with [hyperfine](https://github.com/sharkdp/hyperfine)
+- Generates performance charts using [wunderbar](https://github.com/gribnoysup/wunderbar)
+- Updates README.md with latest results and visualizations
+
 **Prerequisites:**
+- [Node.js](https://nodejs.org/) v16+ - Runtime for chart generation
 - [hyperfine](https://github.com/sharkdp/hyperfine) - Command-line benchmarking tool
 - [jq](https://stedolan.github.io/jq/) - JSON processor
 - [pnpm](https://pnpm.io/) - Package manager (for Node.js tools)

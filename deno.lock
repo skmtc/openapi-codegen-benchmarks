@@ -94,6 +94,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@gribnoysup/wunderbar@^2.2.2",
         "npm:turbo@^2.3.3",
         "npm:typescript@^5.9.3"
       ]

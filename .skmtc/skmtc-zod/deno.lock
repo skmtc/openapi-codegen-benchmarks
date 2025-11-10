@@ -2,6 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@skmtc/core@^0.0.965": "0.0.965",
+    "jsr:@skmtc/worker@*": "0.0.37",
     "jsr:@skmtc/worker@^0.0.37": "0.0.37",
     "jsr:@std/fmt@^1.0.5": "1.0.8",
     "jsr:@std/fs@^1.0.11": "1.0.19",
