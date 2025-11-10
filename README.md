@@ -4,9 +4,9 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 ## 🏆 Key Findings
 
-- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.41s**
-- **Speedup:** skmtc is **27.9x faster** than openapi-ts and **10.5x faster** than orval
-- **Most Consistent:** skmtc has the lowest standard deviation (0.011s)
+- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.51s**
+- **Speedup:** skmtc is **22.9x faster** than openapi-ts and **9.5x faster** than orval-zod
+- **Most Consistent:** skmtc has the lowest standard deviation (0.014s)
 
 <!-- BENCHMARK_RESULTS_START -->
 
@@ -14,20 +14,20 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 0.409s | 0.40s | 0.440s | 0.011s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.311s | 4.21s | 4.528s | 0.093s | 10.5x slower |
-| 🥉 #3 | kubb-zod | 6.575s | 6.30s | 6.975s | 0.182s | 16.1x slower |
-| #4 | openapi-ts-zod | 11.408s | 10.77s | 12.542s | 0.495s | 27.9x slower |
+| 🥇 #1 | skmtc-zod | 0.505s | 0.47s | 0.520s | 0.014s | **1.0x** (baseline) |
+| 🥈 #2 | orval-zod | 4.789s | 4.71s | 4.884s | 0.062s | 9.5x slower |
+| 🥉 #3 | kubb-zod | 7.474s | 7.29s | 7.638s | 0.110s | 14.8x slower |
+| #4 | openapi-ts-zod | 11.565s | 11.30s | 12.064s | 0.251s | 22.9x slower |
 
 ## Performance Visualization
 
 ```
 🚀 Generation Time Comparison (lower is better)
 
-skmtc-zod      0.41s  █▊ 1.0x
-orval-zod      4.31s  ██████████████████ 10.5x
-kubb-zod       6.58s  ███████████████████████████▌ 16.1x
-openapi-ts-zod 11.41s ███████████████████████████████████████████████▋ 27.9x
+skmtc-zod      0.51s  ██▏ 1.0x
+orval-zod      4.79s  ████████████████████ 9.5x
+kubb-zod       7.47s  ███████████████████████████████▎ 14.8x
+openapi-ts-zod 11.57s  ████████████████████████████████████████████████▎ 22.9x
                         ◺ 0.00                                     12.00 ◿
 ```
 
@@ -37,7 +37,7 @@ openapi-ts-zod 11.41s ███████████████████�
 
 - **Test Specification:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
 - **Iterations:** 10 runs per tool with 1 warmup run
-- **Last Updated:** 2025-11-09
+- **Last Updated:** 2025-11-10
 
 <!-- BENCHMARK_RESULTS_END -->
 
