@@ -5,7 +5,7 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 ## 🏆 Key Findings
 
 - **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.51s**
-- **Speedup:** skmtc is **23.3x faster** than openapi-ts and **9.5x faster** than orval-zod-zod
+- **Speedup:** skmtc is **23.3x faster** than openapi-ts and **9.5x faster** than orval
 - **Most Consistent:** skmtc has the lowest standard deviation (0.01s)
 
 <!-- BENCHMARK_RESULTS_START -->
@@ -14,10 +14,10 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 0.512s | 0.50s | 0.533s | 0.010s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.853s | 4.72s | 5.155s | 0.124s | 9.5x slower |
-| 🥉 #3 | kubb-zod | 7.632s | 7.38s | 7.981s | 0.182s | 14.9x slower |
-| #4 | openapi-ts-zod | 11.949s | 11.70s | 12.470s | 0.262s | 23.3x slower |
+| 🥇 #1 | skmtc | 0.512s | 0.50s | 0.533s | 0.010s | **1.0x** (baseline) |
+| 🥈 #2 | orval | 4.853s | 4.72s | 5.155s | 0.124s | 9.5x slower |
+| 🥉 #3 | kubb | 7.632s | 7.38s | 7.981s | 0.182s | 14.9x slower |
+| #4 | openapi-ts | 11.949s | 11.70s | 12.470s | 0.262s | 23.3x slower |
 
 ## Performance Visualization
 
