@@ -5,8 +5,8 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 ## 🏆 Key Findings
 
 - **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.51s**
-- **Speedup:** skmtc is **22.9x faster** than openapi-ts and **9.5x faster** than orval-zod
-- **Most Consistent:** skmtc has the lowest standard deviation (0.014s)
+- **Speedup:** skmtc is **23.3x faster** than openapi-ts and **9.5x faster** than orval-zod-zod
+- **Most Consistent:** skmtc has the lowest standard deviation (0.01s)
 
 <!-- BENCHMARK_RESULTS_START -->
 
@@ -14,20 +14,20 @@ Performance comparison of popular OpenAPI-to-Zod code generation tools using the
 
 | Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
 |------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc-zod | 0.505s | 0.47s | 0.520s | 0.014s | **1.0x** (baseline) |
-| 🥈 #2 | orval-zod | 4.789s | 4.71s | 4.884s | 0.062s | 9.5x slower |
-| 🥉 #3 | kubb-zod | 7.474s | 7.29s | 7.638s | 0.110s | 14.8x slower |
-| #4 | openapi-ts-zod | 11.565s | 11.30s | 12.064s | 0.251s | 22.9x slower |
+| 🥇 #1 | skmtc-zod | 0.512s | 0.50s | 0.533s | 0.010s | **1.0x** (baseline) |
+| 🥈 #2 | orval-zod | 4.853s | 4.72s | 5.155s | 0.124s | 9.5x slower |
+| 🥉 #3 | kubb-zod | 7.632s | 7.38s | 7.981s | 0.182s | 14.9x slower |
+| #4 | openapi-ts-zod | 11.949s | 11.70s | 12.470s | 0.262s | 23.3x slower |
 
 ## Performance Visualization
 
 ```
 🚀 Generation Time Comparison (lower is better)
 
-skmtc-zod      0.51s  ██▏ 1.0x
-orval-zod      4.79s  ████████████████████ 9.5x
-kubb-zod       7.47s  ███████████████████████████████▎ 14.8x
-openapi-ts-zod 11.57s  ████████████████████████████████████████████████▎ 22.9x
+skmtc-zod       0.51s   ██▎ 1.0x
+orval-zod       4.85s   ████████████████████▎ 9.5x
+kubb-zod        7.63s   ███████████████████████████████▉ 14.9x
+openapi-ts-zod  11.95s  █████████████████████████████████████████████████▉ 23.3x
                         ◺ 0.00                                     12.00 ◿
 ```
 
