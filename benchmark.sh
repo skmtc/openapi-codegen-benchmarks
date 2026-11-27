@@ -17,7 +17,7 @@ RESULTS_JSON="benchmark-results.json"
 #   --no-config: Deno must not read this repository's package.json.
 #   --minimum-dependency-age=0: Deno 2.9+ refuses a release that is less
 #     than a day old without it.
-SKMTC="deno run --no-config -A --unstable-worker-options --minimum-dependency-age=0 jsr:@skmtc/cli@0.11.0"
+SKMTC="deno run --no-config -A --unstable-worker-options --minimum-dependency-age=0 jsr:@skmtc/cli@0.12.4"
 
 # Kubb sends anonymous telemetry over the network unless this is set.
 export KUBB_DISABLE_TELEMETRY=1

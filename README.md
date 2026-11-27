@@ -8,38 +8,38 @@ Everything between the two markers below is written by `./benchmark.sh` from the
 
 ## Key Findings
 
-- **Fastest:** openapi-to-zod-schema, with a mean of **0.75s**
-- typed-openapi takes **2.3x** as long (1.76s)
-- Skmtc takes **2.5x** as long (1.88s)
-- Kubb takes **3.7x** as long (2.81s)
-- Hey API (openapi-ts) takes **3.8x** as long (2.82s)
-- Orval takes **4.5x** as long (3.38s)
-- **Lowest standard deviation:** openapi-to-zod-schema (0.042s)
+- **Fastest:** openapi-to-zod-schema, with a mean of **0.68s**
+- Skmtc takes **1.9x** as long (1.29s)
+- typed-openapi takes **2.6x** as long (1.75s)
+- Hey API (openapi-ts) takes **3.7x** as long (2.53s)
+- Kubb takes **3.8x** as long (2.55s)
+- Orval takes **4.0x** as long (2.73s)
+- **Lowest standard deviation:** openapi-to-zod-schema (0.014s)
 - Each tool writes the same thing: one Zod schema for each component schema of the document
 
 ## Results Summary
 
 | Rank | Tool | Version | Mean | Min | Max | Std Dev | Relative |
 |------|------|---------|------|-----|-----|---------|----------|
-| 🥇 #1 | openapi-to-zod-schema | 2.1.0 | 0.750s | 0.661s | 0.793s | 0.042s | **1.0x** (fastest) |
-| 🥈 #2 | typed-openapi | 4.1.0 | 1.761s | 1.684s | 1.843s | 0.052s | 2.3x |
-| 🥉 #3 | Skmtc | CLI 0.11.0, gen-zod 0.4.11 | 1.877s | 1.677s | 2.266s | 0.174s | 2.5x |
-| #4 | Kubb | 5.28.1, plugin-zod 5.13.3 | 2.810s | 2.668s | 3.127s | 0.142s | 3.7x |
-| #5 | Hey API (openapi-ts) | 0.99.0 | 2.825s | 2.574s | 2.976s | 0.120s | 3.8x |
-| #6 | Orval | 8.49.0 | 3.377s | 2.985s | 4.093s | 0.392s | 4.5x |
+| 🥇 #1 | openapi-to-zod-schema | 2.1.0 | 0.677s | 0.659s | 0.701s | 0.014s | **1.0x** (fastest) |
+| 🥈 #2 | Skmtc | CLI 0.12.4, gen-zod 0.6.1 | 1.285s | 1.203s | 1.439s | 0.069s | 1.9x |
+| 🥉 #3 | typed-openapi | 4.1.0 | 1.750s | 1.665s | 1.823s | 0.050s | 2.6x |
+| #4 | Hey API (openapi-ts) | 0.99.0 | 2.532s | 2.462s | 2.705s | 0.075s | 3.7x |
+| #5 | Kubb | 5.28.1, plugin-zod 5.13.3 | 2.547s | 2.466s | 2.717s | 0.072s | 3.8x |
+| #6 | Orval | 8.49.0 | 2.734s | 2.654s | 2.806s | 0.048s | 4.0x |
 
 ## Performance Visualization
 
 ```
 🚀 Generation Time Comparison (lower is better)
 
-openapi-to-zod-schema 0.75s   █████████▍ 1.0x
-typed-openapi-zod     1.76s   ██████████████████████▏ 2.3x
-skmtc-zod             1.88s   ███████████████████████▌ 2.5x
-kubb-zod              2.81s   ███████████████████████████████████▎ 3.7x
-openapi-ts-zod        2.82s   ███████████████████████████████████▍ 3.8x
-orval-zod             3.38s   ██████████████████████████████████████████▎ 4.5x
-                              ◺ 0.00                                      4.00 ◿
+openapi-to-zod-schema 0.68s   ███████████▍ 1.0x
+skmtc-zod             1.29s   █████████████████████▌ 1.9x
+typed-openapi-zod     1.75s   █████████████████████████████▎ 2.6x
+openapi-ts-zod        2.53s   ██████████████████████████████████████████▎ 3.7x
+kubb-zod              2.55s   ██████████████████████████████████████████▌ 3.8x
+orval-zod             2.73s   █████████████████████████████████████████████▋ 4.0x
+                              ◺ 0.00                                      3.00 ◿
 ```
 
 *Chart generated using [wunderbar](https://github.com/gribnoysup/wunderbar) with partial block characters for precise visualization*
@@ -58,10 +58,10 @@ output is larger.
 | Tool | Files | Size |
 |------|-------|------|
 | openapi-to-zod-schema | 1 | 1.4 MB |
-| typed-openapi | 2 | 3.9 MB |
 | Skmtc | 870 | 1.3 MB |
-| Kubb | 877 | 2.5 MB |
+| typed-openapi | 2 | 3.9 MB |
 | Hey API (openapi-ts) | 1 | 1.8 MB |
+| Kubb | 877 | 2.5 MB |
 | Orval | 871 | 9.3 MB |
 
 ### Test Environment

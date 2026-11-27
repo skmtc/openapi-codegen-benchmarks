@@ -1,6 +1,6 @@
 {
   "imports": {
-    "@skmtc/core": "jsr:@skmtc/core@0.48.0",
-    "@skmtc/gen-zod": "jsr:@skmtc/gen-zod@0.4.11"
+    "@skmtc/core": "jsr:@skmtc/core@0.54.0",
+    "@skmtc/gen-zod": "jsr:@skmtc/gen-zod@0.6.1"
   }
 }
