@@ -1,30 +1,19 @@
-import { defineConfig } from '@kubb/core'
-import { pluginOas } from '@kubb/plugin-oas'
+import { defineConfig } from 'kubb/config'
 import { pluginZod } from '@kubb/plugin-zod'
 
 export default defineConfig({
   root: '.',
-  input: {
-    path: './schemas/github-openapi.json',
-  },
+  input: './schemas/github-openapi.json',
   output: {
     path: './src/gen',
   },
   plugins: [
-    // Required: Parse OpenAPI schema
-    pluginOas({
-      output: false, // Disable JSON schema output
-    }),
-
-    // Zod plugin configuration (single file output)
+    // Zod schemas only, written to one file. Kubb 5 reads OpenAPI with its
+    // built-in adapter and prints Zod 4.
     pluginZod({
       output: {
-        path: 'zod.ts', // Single file output
+        path: 'zod.ts',
       },
-      typed: false,
-      dateType: 'stringOffset',
-      unknownType: 'unknown',
-      version: '4',
     }),
   ],
 })

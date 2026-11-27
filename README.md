@@ -1,43 +1,66 @@
 # OpenAPI to Zod Generation Benchmarks
 
-Performance comparison of popular OpenAPI-to-Zod code generation tools using the **GitHub REST API v3 OpenAPI specification** (11.1MB JSON file).
+How long four OpenAPI-to-Zod code generation tools take on the **GitHub REST API v3 OpenAPI document**: [Skmtc](https://github.com/skmtc/skmtc), [Orval](https://github.com/orval-labs/orval), [Kubb](https://github.com/kubb-labs/kubb) and [Hey API](https://github.com/hey-api/openapi-ts).
 
-## 🏆 Key Findings
-
-- **Fastest:** [skmtc](https://github.com/scmtc/skmtc) generates schemas in **0.51s**
-- **Speedup:** skmtc is **23.3x faster** than openapi-ts and **9.5x faster** than orval
-- **Most Consistent:** skmtc has the lowest standard deviation (0.01s)
+Everything between the two markers below is written by `./benchmark.sh` from the run itself.
 
 <!-- BENCHMARK_RESULTS_START -->
 
+## Key Findings
+
+- **Fastest:** Skmtc, with a mean of **2.11s**
+- Orval takes **1.5x** as long (3.21s)
+- Kubb takes **1.6x** as long (3.36s)
+- Hey API (openapi-ts) takes **1.6x** as long (3.44s)
+- **Lowest standard deviation:** Skmtc (0.088s)
+- The tools do not write the same set of schemas: see [What each tool writes](#what-each-tool-writes)
+
 ## Results Summary
 
-| Rank | Framework | Mean Time | Min Time | Max Time | Std Dev | Relative Speed |
-|------|-----------|-----------|----------|----------|---------|----------------|
-| 🥇 #1 | skmtc | 0.512s | 0.50s | 0.533s | 0.010s | **1.0x** (baseline) |
-| 🥈 #2 | orval | 4.853s | 4.72s | 5.155s | 0.124s | 9.5x slower |
-| 🥉 #3 | kubb | 7.632s | 7.38s | 7.981s | 0.182s | 14.9x slower |
-| #4 | openapi-ts | 11.949s | 11.70s | 12.470s | 0.262s | 23.3x slower |
+| Rank | Tool | Version | Mean | Min | Max | Std Dev | Relative |
+|------|------|---------|------|-----|-----|---------|----------|
+| 🥇 #1 | Skmtc | CLI 0.11.0, gen-zod 0.4.11 | 2.109s | 1.996s | 2.284s | 0.088s | **1.0x** (fastest) |
+| 🥈 #2 | Orval | 8.49.0 | 3.209s | 3.011s | 3.750s | 0.218s | 1.5x |
+| 🥉 #3 | Kubb | 5.28.1, plugin-zod 5.13.3 | 3.356s | 2.782s | 4.065s | 0.419s | 1.6x |
+| #4 | Hey API (openapi-ts) | 0.99.0 | 3.437s | 3.216s | 3.677s | 0.152s | 1.6x |
 
 ## Performance Visualization
 
 ```
 🚀 Generation Time Comparison (lower is better)
 
-skmtc-zod       0.51s   ██▎ 1.0x
-orval-zod       4.85s   ████████████████████▎ 9.5x
-kubb-zod        7.63s   ███████████████████████████████▉ 14.9x
-openapi-ts-zod  11.95s  █████████████████████████████████████████████████▉ 23.3x
-                        ◺ 0.00                                     12.00 ◿
+skmtc-zod       2.11s   ██████████████████████████▍ 1.0x
+orval-zod       3.21s   ████████████████████████████████████████▏ 1.5x
+kubb-zod        3.36s   ██████████████████████████████████████████ 1.6x
+openapi-ts-zod  3.44s   ███████████████████████████████████████████ 1.6x
+                        ◺ 0.00                                      4.00 ◿
 ```
 
 *Chart generated using [wunderbar](https://github.com/gribnoysup/wunderbar) with partial block characters for precise visualization*
 
+## What each tool writes
+
+| Tool | Files | Size | Exported schemas |
+|------|-------|------|------------------|
+| Skmtc | 870 | 1.3 MB | 870 |
+| Orval | 1 | 5.5 MB | 6,159 |
+| Kubb | 1 | 4.2 MB | 10,859 |
+| Hey API (openapi-ts) | 1 | 2.2 MB | 3,840 |
+
+The tools do not write the same set of schemas, so the times do not compare
+equal work. Skmtc's `@skmtc/gen-zod` writes one file for each component schema
+of the document. Orval, Kubb and Hey API each write one file, with schemas for
+the parameters, the request body and the responses of each operation. Kubb and
+Hey API write the component schemas too.
+
 ### Test Environment
 
-- **Test Specification:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
-- **Iterations:** 10 runs per tool with 1 warmup run
-- **Last Updated:** 2025-11-10
+- **Test Specification:** GitHub REST API v3 OpenAPI document (11.1 MB of JSON, 737 paths, 870 component schemas). Each tool reads its own copy of the same file.
+- **Iterations:** 10 runs per tool with 1 warmup run, timed by [hyperfine](https://github.com/sharkdp/hyperfine) 1.19.0
+- **A run** is the whole command a user types, from process start to exit. Each run starts with no output and no lock file from the run before.
+- **Machine:** Apple M1 Max, 10 cores, 32 GB, darwin arm64
+- **Runtimes:** Node.js 24.13.1, Deno 2.9.8
+- **Last Updated:** 2026-11-27
 
 <!-- BENCHMARK_RESULTS_END -->
 
@@ -49,25 +72,34 @@ Run the benchmarks yourself:
 ./benchmark.sh
 ```
 
-The script automatically:
-- Runs benchmarks with [hyperfine](https://github.com/sharkdp/hyperfine)
-- Generates performance charts using [wunderbar](https://github.com/gribnoysup/wunderbar)
-- Updates README.md with latest results and visualizations
+The script:
+- Installs the Node.js tools with pnpm, and runs the Skmtc CLI straight from JSR at a pinned version (it does not replace a `skmtc` you have installed)
+- Times each tool with [hyperfine](https://github.com/sharkdp/hyperfine)
+- Draws the chart with [wunderbar](https://github.com/gribnoysup/wunderbar)
+- Rewrites the results part of this README, with the versions it ran and what each tool wrote
 
 **Prerequisites:**
-- [Node.js](https://nodejs.org/) v16+ - Runtime for chart generation
+- [Node.js](https://nodejs.org/) v22.22+ - Runtime for Orval, Kubb and Hey API, and for the chart
+- [pnpm](https://pnpm.io/) - Package manager for the Node.js tools
+- [Deno](https://deno.land/) v2.9+ - Runtime for Skmtc
 - [hyperfine](https://github.com/sharkdp/hyperfine) - Command-line benchmarking tool
-- [jq](https://stedolan.github.io/jq/) - JSON processor
-- [pnpm](https://pnpm.io/) - Package manager (for Node.js tools)
-- [Deno](https://deno.land/) - Runtime (for skmtc)
+
+## How each tool is set up
+
+Each tool writes Zod 4 schemas and nothing else, with its default options.
+
+| Tool | Configuration | Command |
+|------|---------------|---------|
+| **Skmtc** | [`.skmtc/skmtc-zod/`](.skmtc/skmtc-zod/): a project with the published `@skmtc/gen-zod` generator | `skmtc generate skmtc-zod .skmtc/skmtc-zod/openapi.json` |
+| **Orval** | [`orval-zod/orval.config.mjs`](orval-zod/orval.config.mjs): `client: 'zod'`, `mode: 'single'` | `orval --project github` |
+| **Kubb** | [`kubb-zod/kubb.config.ts`](kubb-zod/kubb.config.ts): `pluginZod` with one output file | `kubb generate` |
+| **Hey API** | [`openapi-ts-zod/openapi-ts.config.ts`](openapi-ts-zod/openapi-ts.config.ts): the `zod` plugin with requests, responses and definitions | `openapi-ts` |
 
 ## About the Tools
 
 | Tool | Description | Links |
 |------|-------------|-------|
-| **skmtc** | Deno-native OpenAPI code generator with Zod support | [GitHub](https://github.com/scmtc/skmtc) • [JSR](https://jsr.io/@skmtc/cli) |
-| **Orval** | OpenAPI client and schema generator | [GitHub](https://github.com/anymaniax/orval) • [Docs](https://orval.dev/) |
-| **Kubb** | Plugin-based OpenAPI code generator | [GitHub](https://github.com/kubb-project/kubb) • [Docs](https://kubb.dev/) |
-| **openapi-ts** | TypeScript client and schema generator | [GitHub](https://github.com/hey-api/openapi-ts) • [Docs](https://heyapi.vercel.app/) |
-
-All tools generate [Zod v4](https://github.com/colinhacks/zod) schemas from the same OpenAPI specification.
+| **Skmtc** | Deno-based code generator with cloneable generators | [GitHub](https://github.com/skmtc/skmtc) • [JSR](https://jsr.io/@skmtc/cli) • [Docs](https://skmtc.dev/) |
+| **Orval** | OpenAPI client and schema generator | [GitHub](https://github.com/orval-labs/orval) • [Docs](https://orval.dev/) |
+| **Kubb** | Plugin-based OpenAPI code generator | [GitHub](https://github.com/kubb-labs/kubb) • [Docs](https://kubb.dev/) |
+| **Hey API** | TypeScript client and schema generator (`@hey-api/openapi-ts`) | [GitHub](https://github.com/hey-api/openapi-ts) • [Docs](https://heyapi.dev/) |

@@ -1,0 +1,11 @@
+# .skmtcignore — files to exclude from `skmtc deploy` uploads (gitignore syntax).
+#
+# Built-in defaults already skip derived bundles (server.ts/js, bundle.js,
+# worker.ts), node_modules, .git, secrets (.env*), and binary assets.
+# Add project-specific exclusions below; use `!pattern` to re-include something
+# a default excludes.
+
+# deploy / generate logs
+.settings/logs.txt
+.settings/error-logs.txt
+.settings/logs.ndjson

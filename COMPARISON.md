@@ -1,5 +1,9 @@
 # Zod Schema Generator Comparison
 
+> **This page is from October 2025.** Its versions, times, sizes and
+> configuration examples are those of that month. The current figures and
+> versions are in [README.md](README.md), which `./benchmark.sh` rewrites.
+
 Comprehensive comparison of Orval, openapi-ts, Skmtc, and Kubb for generating Zod schemas from OpenAPI specifications.
 
 **Test Schema:** GitHub REST API v3 OpenAPI spec (11.1MB JSON)
