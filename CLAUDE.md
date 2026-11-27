@@ -35,9 +35,9 @@ Each Node.js tool folder is a React+Vite project with `schemas/github-openapi.js
 
 - **One document.** `.skmtc/skmtc-zod/openapi.json` and the three `schemas/github-openapi.json` files are the same bytes. If you replace one, replace all four.
 - **Latest versions of every tool**, not only of one. Versions are pinned exactly: in each `package.json`, in `.skmtc/skmtc-zod/deno.json`, and the Skmtc CLI in `benchmark.sh`.
-- **Default options.** Each tool writes Zod schemas only, with no option set to make it faster.
+- **Equal work, default options.** Each tool writes one Zod schema for each component schema and nothing for the operations. That is what `@skmtc/gen-zod` writes; the other three have an option for it (see each config file). No other option is set.
 - **A run starts clean.** `benchmark.sh` removes each tool's output and lock file before every timed run.
-- **Say what each tool writes.** The tools do not write the same set of schemas; `update-readme.js` counts files, bytes and exported schemas, and the README says so.
+- **Say what each tool writes.** `update-readme.js` counts each tool's files and bytes. If a tool's file count is far from the number of component schemas, its config no longer does what the README says.
 
 ## Key Commands
 

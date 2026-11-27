@@ -8,12 +8,11 @@ export default defineConfig({
     path: './src/gen',
   },
   plugins: [
-    // Zod schemas only, written to one file. Kubb 5 reads OpenAPI with its
-    // built-in adapter and prints Zod 4.
+    // A Zod schema for each component schema, and nothing else: every
+    // operation is left out. Kubb 5 reads OpenAPI with its built-in adapter
+    // and prints Zod 4.
     pluginZod({
-      output: {
-        path: 'zod.ts',
-      },
+      exclude: [{ type: 'path', pattern: /.*/ }],
     }),
   ],
 })

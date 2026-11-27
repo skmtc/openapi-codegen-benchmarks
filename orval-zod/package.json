@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "generate:api": "orval",
-    "generate:api:github": "orval --project github",
-    "generate:api:petstore": "orval --project petstore"
+    "generate:api:github": "orval --project github"
   },
   "dependencies": {
     "react": "^19.1.1",

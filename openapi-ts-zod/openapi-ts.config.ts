@@ -7,16 +7,12 @@ export default defineConfig({
   // Output: Where to generate files
   output: 'src/client',
 
-  // Plugins: Configure what to generate
+  // A Zod schema for each component schema, and nothing else
   plugins: [
-    // Only generate Zod schemas - nothing else
     {
       name: 'zod',
-      // Generate schemas for requests
-      requests: true,
-      // Generate schemas for responses
-      responses: true,
-      // Generate schemas for reusable definitions
+      requests: false,
+      responses: false,
       definitions: true,
     },
   ],

@@ -65,15 +65,13 @@ const toFiles = dir =>
       })
     : [];
 
-/** What a tool wrote: how many files, how many bytes, and how many exported schemas. */
+/** What a tool wrote: how many files and how many bytes. */
 const toOutput = dir => {
   const files = toFiles(dir);
-  const texts = files.map(file => fs.readFileSync(file, 'utf8'));
 
   return {
     files: files.length,
-    bytes: texts.reduce((sum, text) => sum + Buffer.byteLength(text), 0),
-    schemas: texts.reduce((sum, text) => sum + (text.match(/^export const /gm) || []).length, 0),
+    bytes: files.reduce((sum, file) => sum + fs.statSync(file).size, 0),
   };
 };
 
@@ -106,7 +104,7 @@ const findings = [
     .slice(1)
     .map(result => `- ${toTool(result).label} takes **${(result.mean / fastest.mean).toFixed(1)}x** as long (${seconds(result.mean, 2)})`),
   `- **Lowest standard deviation:** ${toTool(steadiest).label} (${seconds(steadiest.stddev, 3)})`,
-  '- The tools do not write the same set of schemas: see [What each tool writes](#what-each-tool-writes)',
+  '- Each tool writes the same thing: one Zod schema for each component schema of the document',
 ];
 
 const resultRows = results.map((result, index) =>
@@ -129,7 +127,7 @@ const outputRows = results.map(result => {
     throw new Error(`${toTool(result).label} has no output in ${toTool(result).output}. Run ./benchmark.sh.`);
   }
 
-  return [toTool(result).label, count(output.files), megabytes(output.bytes), count(output.schemas)].join(' | ');
+  return [toTool(result).label, count(output.files), megabytes(output.bytes)].join(' | ');
 });
 
 const chart = execFileSync('node', ['generate-chart.js'], { encoding: 'utf8' }).trimEnd();
@@ -159,15 +157,16 @@ ${chart}
 
 ## What each tool writes
 
-| Tool | Files | Size | Exported schemas |
-|------|-------|------|------------------|
-${outputRows.map(row => `| ${row} |`).join('\n')}
+Each tool is set to write one Zod schema for each of the document's
+${count(Object.keys(spec.components.schemas).length)} component schemas, and nothing for the operations. That is what
+Skmtc's \`@skmtc/gen-zod\` writes, and the other three have an option for it.
+The layout is each tool's own: Skmtc, Orval and Kubb write a file for each
+schema, and Hey API writes one file. Orval writes each schema in full where
+the others refer to another schema by name, so its output is larger.
 
-The tools do not write the same set of schemas, so the times do not compare
-equal work. Skmtc's \`@skmtc/gen-zod\` writes one file for each component schema
-of the document. Orval, Kubb and Hey API each write one file, with schemas for
-the parameters, the request body and the responses of each operation. Kubb and
-Hey API write the component schemas too.
+| Tool | Files | Size |
+|------|-------|------|
+${outputRows.map(row => `| ${row} |`).join('\n')}
 
 ### Test Environment
 
