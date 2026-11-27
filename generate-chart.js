@@ -39,6 +39,9 @@ const results = benchmarkData.results
     meanFormatted: (result.mean).toFixed(2),
   }));
 
+// The labels line up on the longest tool name
+const labelWidth = Math.max(...results.map(result => result.name.length));
+
 // Get fastest time for relative calculation
 const fastestTime = results[0].mean;
 
@@ -71,9 +74,9 @@ chartLines.forEach((line, idx) => {
     const mean = `${result.meanFormatted}s`
 
     // Format label with padding
-    const label = `${result.name.padEnd(15)} ${mean.padEnd(6)} `;
+    const label = `${result.name.padEnd(labelWidth)} ${mean.padEnd(6)} `;
     console.log(`${label} ${line} ${relativeText}`);
   }
 });
 
-console.log(`                        ${scale}`);
+console.log(`${' '.repeat(labelWidth + 9)}${scale}`);

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # OpenAPI to Zod code generation benchmarks.
-# Compares Skmtc, Orval, Kubb and Hey API (openapi-ts) on one document.
+# Compares Skmtc, Orval, Kubb, Hey API (openapi-ts), typed-openapi and
+# openapi-to-zod-schema on one document.
 
 set -e
 
@@ -29,7 +30,7 @@ $SKMTC generate skmtc-zod .skmtc/skmtc-zod/openapi.json > /dev/null
 
 # Each timed run starts with no output and no lock file from the run before.
 # Skmtc and Kubb each keep a record of the files they wrote.
-PREPARE='rm -rf skmtc-zod-output orval-zod/src/gen/* kubb-zod/src/gen/* openapi-ts-zod/src/client/* && rm -f .skmtc/skmtc-zod/.settings/generated.lock.json .skmtc/skmtc-zod/.settings/manifest.json kubb-zod/kubb-lock.json'
+PREPARE='rm -rf skmtc-zod-output orval-zod/src/gen/* kubb-zod/src/gen/* openapi-ts-zod/src/client/* typed-openapi-zod/src/gen/* openapi-to-zod-schema-zod/src/gen/* && rm -f .skmtc/skmtc-zod/.settings/generated.lock.json .skmtc/skmtc-zod/.settings/manifest.json kubb-zod/kubb-lock.json'
 
 hyperfine \
   --runs 10 \
@@ -39,20 +40,23 @@ hyperfine \
   -n skmtc-zod "$SKMTC generate skmtc-zod .skmtc/skmtc-zod/openapi.json" \
   -n orval-zod 'cd orval-zod && pnpm generate:api:github' \
   -n kubb-zod 'cd kubb-zod && pnpm generate' \
-  -n openapi-ts-zod 'cd openapi-ts-zod && pnpm generate:api'
+  -n openapi-ts-zod 'cd openapi-ts-zod && pnpm generate:api' \
+  -n typed-openapi-zod 'cd typed-openapi-zod && pnpm generate' \
+  -n openapi-to-zod-schema 'cd openapi-to-zod-schema-zod && pnpm generate'
 
 echo ""
 echo "✅ Benchmarks complete!"
 echo ""
 
-# The last timed run was Hey API's, and its `--prepare` removed the other
-# tools' output. Run each tool once more, so the README can say what each wrote.
+# Each timed run's `--prepare` removed every other tool's output. Run each tool once more, so the README can say what each wrote.
 echo "📦 Generating each tool's output once more to measure it..."
 bash -c "$PREPARE"
 $SKMTC generate skmtc-zod .skmtc/skmtc-zod/openapi.json > /dev/null
 (cd orval-zod && pnpm generate:api:github > /dev/null)
 (cd kubb-zod && pnpm generate > /dev/null)
 (cd openapi-ts-zod && pnpm generate:api > /dev/null)
+(cd typed-openapi-zod && pnpm generate > /dev/null)
+(cd openapi-to-zod-schema-zod && pnpm generate > /dev/null)
 
 echo "📊 Updating README.md with results..."
 node update-readme.js

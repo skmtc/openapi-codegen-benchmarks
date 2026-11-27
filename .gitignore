@@ -6,6 +6,8 @@ skmtc-zod-output
 orval-zod/src/gen
 kubb-zod/src/gen
 openapi-ts-zod/src/client
+typed-openapi-zod/src/gen
+openapi-to-zod-schema-zod/src/gen
 *.gen.ts
 
 # Skmtc: what a run derives. The project's settings stay.

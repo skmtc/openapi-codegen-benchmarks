@@ -4,12 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-A **benchmarking repository** that times four OpenAPI-to-Zod code generation tools on the GitHub REST API v3 OpenAPI document:
+A **benchmarking repository** that times six OpenAPI-to-Zod code generation tools on the GitHub REST API v3 OpenAPI document:
 
 - **Skmtc** (`.skmtc/skmtc-zod/`)
 - **Orval** (`orval-zod/`)
 - **Kubb** (`kubb-zod/`)
 - **Hey API, `@hey-api/openapi-ts`** (`openapi-ts-zod/`)
+- **typed-openapi** (`typed-openapi-zod/`)
+- **openapi-to-zod-schema** (`openapi-to-zod-schema-zod/`)
 
 The figures live in `README.md`, between the `BENCHMARK_RESULTS` markers. `./benchmark.sh` writes that part from the run. Do not type a time, a version, a rank or a size into the README by hand.
 
@@ -26,6 +28,8 @@ openapi-codegen-benchmarks/
 ├── orval-zod/              # Orval project
 ├── kubb-zod/               # Kubb project
 ├── openapi-ts-zod/         # Hey API project
+├── typed-openapi-zod/      # typed-openapi: a package.json with the command, and the input
+├── openapi-to-zod-schema-zod/  # openapi-to-zod-schema: the same
 └── COMPARISON.md           # A feature comparison from October 2025, kept as it was
 ```
 
@@ -33,10 +37,11 @@ Each Node.js tool folder is a React+Vite project with `schemas/github-openapi.js
 
 ## Rules for a fair run
 
-- **One document.** `.skmtc/skmtc-zod/openapi.json` and the three `schemas/github-openapi.json` files are the same bytes. If you replace one, replace all four.
+- **One document.** `.skmtc/skmtc-zod/openapi.json` and the five `schemas/github-openapi.json` files are the same bytes. If you replace one, replace all six.
 - **Latest versions of every tool**, not only of one. Versions are pinned exactly: in each `package.json`, in `.skmtc/skmtc-zod/deno.json`, and the Skmtc CLI in `benchmark.sh`.
 - **Equal work, default options.** Each tool writes one Zod schema for each component schema and nothing for the operations. That is what `@skmtc/gen-zod` writes; the other three have an option for it (see each config file). No other option is set.
 - **A run starts clean.** `benchmark.sh` removes each tool's output and lock file before every timed run.
+- **A tool is added only if it does the same work**: it is maintained, writes Zod 4, and can be limited to the component schemas. The README lists the tools left out, each with its reason.
 - **Say what each tool writes.** `update-readme.js` counts each tool's files and bytes. If a tool's file count is far from the number of component schemas, its config no longer does what the README says.
 
 ## Key Commands

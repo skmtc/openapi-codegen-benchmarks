@@ -53,6 +53,16 @@ const tools = {
     version: () => toDevVersion('openapi-ts-zod', '@hey-api/openapi-ts'),
     output: 'openapi-ts-zod/src/client',
   },
+  'typed-openapi-zod': {
+    label: 'typed-openapi',
+    version: () => toDevVersion('typed-openapi-zod', 'typed-openapi'),
+    output: 'typed-openapi-zod/src/gen',
+  },
+  'openapi-to-zod-schema': {
+    label: 'openapi-to-zod-schema',
+    version: () => toDevVersion('openapi-to-zod-schema-zod', 'openapi-to-zod-schema'),
+    output: 'openapi-to-zod-schema-zod/src/gen',
+  },
 };
 
 /** Every .ts file below a folder. */
@@ -159,10 +169,12 @@ ${chart}
 
 Each tool is set to write one Zod schema for each of the document's
 ${count(Object.keys(spec.components.schemas).length)} component schemas, and nothing for the operations. That is what
-Skmtc's \`@skmtc/gen-zod\` writes, and the other three have an option for it.
-The layout is each tool's own: Skmtc, Orval and Kubb write a file for each
-schema, and Hey API writes one file. Orval writes each schema in full where
-the others refer to another schema by name, so its output is larger.
+Skmtc's \`@skmtc/gen-zod\` and openapi-to-zod-schema write, and the others
+have options for it. The layout is each tool's own: Skmtc, Orval and Kubb
+write a file for each schema, and the rest write one file of schemas.
+typed-openapi also writes a file of type declarations beside it. Orval writes
+each schema in full where the others refer to another schema by name, so its
+output is larger.
 
 | Tool | Files | Size |
 |------|-------|------|
