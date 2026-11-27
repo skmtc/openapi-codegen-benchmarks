@@ -1,5 +1,20 @@
 node_modules
-.settings
 .DS_Store
+
+# What the tools write
+skmtc-zod-output
+orval-zod/src/gen
+kubb-zod/src/gen
+openapi-ts-zod/src/client
+typed-openapi-zod/src/gen
+openapi-to-zod-schema-zod/src/gen
 *.gen.ts
-.skmtc/skmtc-zod/bundle.js
+
+# Skmtc: what a run derives. The project's settings stay.
+.skmtc/*/bundle.js
+.skmtc/*/worker.ts
+.skmtc/*/.settings/*
+!.skmtc/*/.settings/skmtc.config.json
+
+# Kubb's record of the files it wrote
+kubb-zod/kubb-lock.json
